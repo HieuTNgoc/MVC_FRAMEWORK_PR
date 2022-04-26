@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: border-box;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+#master {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: bisque;
+    overflow: hidden;
+}
+
+.main {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 700px;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+.right-background {
+    position: absolute;
+    left: 700px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(https://static-gcdn.basecdn.net/account/image/background.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: right center;
+}
+
+.content {
+    max-width: 550px;
+    margin: auto;
+    padding: 20px;
+    /* overflow-y: scroll;
+    overflow-x: hidden;
+    inset: 0px -14px 0px 0px; */
+}
+
+.heading {
+    text-align: center;
+    border-bottom: 2px solid #eee;
+}
+
+.logo-login {
+    padding: 20px;
+}
+
+.heading h1 {
+    font-size: 30px;
+    font-weight: 500;
+    padding: 10px;
+}
+
+.heading .sub-heading {
+    opacity: 0.7;
+    padding-bottom: 20px;
+    font-size: 0.8em;
+}
+
+#auth-form {
+    padding: 30px 0px 50px;
+    width: 100%;
+    border-bottom: 1.5px solid #eee;
+}
+
+.form-recover {
+    width: 100%;
+}
+
+#auth-form .label {
+    display: inline-block;
+    font-size: 1.1em;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+
+#auth-form .row input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 2px;
+    width: calc(100% - 22px);
+    font-size: 1.2em;
+}
+
+.login-check-box {
+    padding: 30px 0px 10px;
+}
+
+#auth-form .row {
+    padding-bottom: 20px;
+}
+
+#auth-form .login-check-box {
+    opacity: 0.7;
+}
+
+#auth-form .login-check-box #saved {
+    vertical-align: -1px;
+    margin-right: 10px;
+}
+
+.email-sender {
+    opacity: 0.7;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.email-sender a {
+    text-decoration: none;
+    color: rgb(6, 102, 126);
+}
+
+#auth-form .submit {
+    text-align: center;
+    width: calc(100%-20px);
+    color: white;
+    font-weight: 700;
+    font-size: 1.1em;
+    background-color: #2bd14e;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin: 20px 0px;
+}
+
+#auth-form .submit:hover {
+    opacity: 0.7;
+}
+
+.extra-inf {
+    padding-top: 30px;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 500;
+    opacity: 0.6;
+}
+
+.extra-inf a {
+    font-weight: 800;
+}
+
+.extra-inf .extra-option {
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 1.5;
+}
