@@ -1,6 +1,11 @@
 <?php
-    foreach ($data['users'] as $user) {
-        echo "Information: " . $user->user_name . '  ' . $user->user_email;
-        echo '<br>';
-    }
+	require_once APPROOT . '/views/includes/head_index.php';
 ?>
+
+<div id="section-landing">
+	<?php
+		require_once APPROOT . '/views/includes/navigation_index.php';
+	?>
+	<h1>Hello</h1>
+	<h2>Test php includes</h2>
+</div>

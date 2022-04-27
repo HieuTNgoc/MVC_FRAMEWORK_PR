@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Base Account</title>
-    <link rel="stylesheet" href="./css/account.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/account.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -17,7 +18,7 @@
             <div class="items">
                 <div class="item">
                     <div class='avatar'>
-                        <img src="./img/avt.jpg" alt="" srcset="">
+                        <img src="../public/img/avt.jpg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="item">
@@ -86,7 +87,7 @@
                     </div>
                     <div class="main">
                         <div class="img upload-img">
-                            <img src="./img/avt.jpg" alt="Avatar">
+                            <img src="../public/img/avt.jpg" alt="Avatar">
                             <div class="upload-form">
                                 <form action="" method="post">
                                     <input type="file" name="image" id="" hidden>
