@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Base Account</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="../public/css/login.css">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
                 <div class="extra-inf">
                     <a href="#" class="extra-option">Login with Guest/Client access?</a>
                     <br>
-                    <a href="register.html">Register?</a>
+                    <a href="register">Register?</a>
                 </div>
             </div>
         </div>

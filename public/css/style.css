@@ -1,0 +1,41 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    border: border-box;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+.top-nav {
+    display: block;
+}
+
+.top-nav ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 6%;
+    top: 2%;
+}
+
+.top-nav ul li {
+    display: inline-block;
+    margin-left: 28px;
+}
+
+.top-nav ul li a {
+    color: aqua;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.top-nav ul li a:hover {
+    color: aquamarine;
+    font-size: 1.2em;
+    font-weight: 500;
+}
