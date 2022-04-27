@@ -1,0 +1,47 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    border: border-box;
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+    background-image: url(https://static-gcdn.basecdn.net/account/image/background.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: right center;
+    color: white;
+}
+
+.top-nav {
+    display: block;
+}
+
+
+/* .top-nav ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 30%;
+    top: 10%;
+} */
+
+.top-nav ul li {
+    display: inline-block;
+    margin-left: 28px;
+}
+
+.top-nav ul li a {
+    color: aqua;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.top-nav ul li a:hover {
+    color: aquamarine;
+    font-size: 1.5em;
+    font-weight: 700;
+}

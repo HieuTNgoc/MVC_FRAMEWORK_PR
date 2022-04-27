@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Base Account</title>
+    <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../public/css/login.css">
 </head>
 
@@ -18,17 +19,23 @@
                     <h1>Login</h1>
                     <p class="sub-heading">Welcome back. Login to start working.</p>
                 </div>
-                <form action="" method="post" id="auth-form">
+                <form action="<?php echo URLROOT; ?>/users/login" method="post" id="auth-form">
                     <div class="form-login">
                         <div class="label">Email</div>
                         <div class="row">
                             <div class="input">
                                 <input type="text" id="login-email" name="email" placeholder="Your email "></div>
+                            <span class="invalidFeedback">
+                                <?php echo $data['emailError']; ?>
+                            </span>
                         </div>
                         <div class="row">
                             <div class="label">Password</div>
                             <a href="recover.html" id="right-label">Forget your password?</a>
                             <input type="password" id="login-password" name="password" placeholder="Your password">
+                            <span class="invalidFeedback">
+                                <?php echo $data['passwordError']; ?>
+                            </span>
                         </div>
                     </div>
                     <div class="login-check-box">

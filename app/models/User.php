@@ -14,4 +14,19 @@
 
 			return $result;
 		}
+
+		public function findUserByEmail($email) {
+			// Prepared statement
+			$this->db->query('SELECT * FROM users WHERE email = :email');
+
+			// Email param will be bind with the email variable
+			$this->db->bind(':email', $email);
+
+			// Check if email already registered
+			if ($this->db->rowCount() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
 	}

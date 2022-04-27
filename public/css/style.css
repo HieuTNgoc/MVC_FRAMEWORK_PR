@@ -1,41 +1,37 @@
-html,
-body {
-    height: 100%;
-    width: 100%;
-    padding: 0;
+* {
     margin: 0;
-    top: 0;
-    bottom: 0;
+    padding: 0;
     border: border-box;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
 }
 
-.top-nav {
-    display: block;
-}
-
-.top-nav ul {
-    margin: 0;
-    padding: 0;
+#master {
     position: absolute;
-    right: 6%;
-    top: 2%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
-.top-nav ul li {
-    display: inline-block;
-    margin-left: 28px;
+.main {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 700px;
+    background-color: #fff;
+    overflow-y: auto;
 }
 
-.top-nav ul li a {
-    color: aqua;
-    font-size: 1.2em;
-    font-weight: 400;
-    text-decoration: none;
-}
-
-.top-nav ul li a:hover {
-    color: aquamarine;
-    font-size: 1.2em;
-    font-weight: 500;
+.right-background {
+    position: absolute;
+    left: 700px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url(https://static-gcdn.basecdn.net/account/image/background.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    background-position: right center;
 }

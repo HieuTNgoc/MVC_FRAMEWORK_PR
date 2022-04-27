@@ -1,20 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: border-box;
-    font-family: 'Roboto', 'Segoe UI', sans-serif;
-}
-
-#master {
-    display: block;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-}
-
 .left-bar {
     background-color: #182320;
     width: 20%;
