@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Base Account</title>
     <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="../public/css/register.css">
+    <script src="../public/js/javascript.js"></script>
 </head>
 
 <body>
@@ -19,43 +20,57 @@
                     <h1>Register</h1>
                     <p class="sub-heading">Welcome back. Register to start working.</p>
                 </div>
-                <form action="<?php echo URLROOT; ?>/users/register" method="post" id="auth-form">
+                <form action="../users/register" method="POST" id="auth-form">
                     <div class="form-login">
                         <div class="row">
                             <div class="label">User Name</div>
                             <div class="input">
-                                <input type="text" id="username" name="username" placeholder="Your name "></div>
+                                <?php 
+                                    if (empty($data['username_error']) && !empty($data['username'])) {
+                                        echo '<input type="text" id="username" name="username" value="' . $data['username'] . '">';
+                                    } else {
+                                        echo '<input type="text" id="username" name="username" placeholder="Your name " required>';
+                                    }
+                                ?>
+                            </div>
                             <span class="invalidFeedback">
-                                <?php echo $data['usernameError']; ?>
+                                <?php echo $data['username_error']; ?>
                             </span>
                         </div>
 
                         <div class="row">
                             <div class="label">Email</div>
                             <div class="input">
-                                <input type="text" id="login-email" name="email" placeholder="Your email "></div>
+                                <?php 
+                                    if (empty($data['email_error']) && !empty($data['email'])) {
+                                        echo '<input type="text" id="login-email" name="email" value="' . $data['email'] . '">';
+                                    } else {
+                                        echo '<input type="text" id="login-email" name="email" placeholder="Your email " required>';
+                                    }
+                                ?>
+                            </div>
                             <span class="invalidFeedback">
-                                <?php echo $data['emailError']; ?>
+                                <?php echo $data['email_error']; ?>
                             </span>
                         </div>
                         <div class="row">
                             <div class="label">Password</div>
-                            <input type="password" id="login-password" name="password" placeholder="Your password">
+                            <input type="password" id="login-password" name="password" placeholder="Your password" required>
                             <span class="invalidFeedback">
-                                <?php echo $data['passwordError']; ?>
+                                <?php echo $data['password_error']; ?>
                             </span>
                         </div>
 
                         <div class="row">
                             <div class="label">Confirm Password</div>
-                            <input type="password" id="login-password" name="confirmPassword" placeholder="Confirm your password">
+                            <input type="password" id="login-password" name="confirm_password" placeholder="Confirm your password" required>
                             <span class="invalidFeedback">
-                                <?php echo $data['confirmPasswordError']; ?>
+                                <?php echo $data['confirm_password_error']; ?>
                             </span>
                         </div>
 
                     </div>
-                    <div class="submit">Register to start working</div>
+                    <button class="submit" onclick="submit_form()">Register to start working</button>
                 </form>
             </div>
         </div>

@@ -23,12 +23,24 @@
             }
         }
 
-        // Allows us to write queries
+        /**
+         * Prepares a statement for execution
+         *
+         * @param [string] $sql
+         * @return void
+         */
         public function query($sql) {
             $this->statement = $this->dbHandler->prepare($sql);
         }
 
-        // Bind values
+        /**
+         * Binds a value to a parameter
+         *
+         * @param [string] $parameter
+         * @param [mixed] $value
+         * @param [int] $type
+         * @return void
+         */
         public function bind($parameter, $value, $type = null) {
             switch (is_null($type)) {
                 case is_int($value):
@@ -46,27 +58,42 @@
             $this->statement->bindValue($parameter, $value, $type);
         }
 
-        // Execute the prepare statement
+        /**
+         * Executes a prepared statement
+         *
+         * @return void
+         */
         public function execute() {
             return $this->statement->execute();
         }
 
-        // Return an array
+        /**
+         * Fetches the remaining rows from a result set
+         *
+         * @return array
+         */
         public function resultSet() {
             $this->execute();
             return $this->statement->fetchAll(PDO::FETCH_OBJ);
         }
 
-        // Return a specific row as an object
+        /**
+         * PDOStatement::fetch — Fetches the next row from a result set
+         *
+         * @return mixed
+         */
         public function single() {
             $this->execute();
             return $this->statement->fetch(PDO::FETCH_OBJ);
         }
 
-        // Get's the row count
+        /**
+         * Returns the number of rows affected by the last SQL statement
+         *
+         * @return int
+         */
         public function rowCount() {
             return $this->statement->rowCount();
         }
-
     }
 ?>

@@ -26,7 +26,7 @@
                             <div class="input">
                                 <input type="text" id="login-email" name="email" placeholder="Your email "></div>
                             <span class="invalidFeedback">
-                                <?php echo $data['emailError']; ?>
+                                <?php echo $data['email_error']; ?>
                             </span>
                         </div>
                         <div class="row">
@@ -34,14 +34,14 @@
                             <a href="recover.html" id="right-label">Forget your password?</a>
                             <input type="password" id="login-password" name="password" placeholder="Your password">
                             <span class="invalidFeedback">
-                                <?php echo $data['passwordError']; ?>
+                                <?php echo $data['password_error']; ?>
                             </span>
                         </div>
                     </div>
                     <div class="login-check-box">
                         <input type="checkbox" name="saved" id="saved">Keep me login
                     </div>
-                    <div class="submit">Login to start working</div>
+                    <button class="submit" onclick="submit_form()">Login to start working</button>
                     <div class="oauth">
                         <div class="label-center">
                             <span>  Or, login via single sign-on  </span>
