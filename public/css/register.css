@@ -73,6 +73,8 @@
     border-radius: 3px;
     margin: 20px 0px;
     cursor: pointer;
+    width: 100%;
+    border: none;
 }
 
 #auth-form .submit:hover {
