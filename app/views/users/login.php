@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Base Account</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/login.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./public/js/javascript.js"></script>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
                     <h1>Login</h1>
                     <p class="sub-heading">Welcome back. Login to start working.</p>
                 </div>
-                <form action="<?php echo URLROOT; ?>/users/login" method="post" id="auth-form">
+                <form action="./login" method="post" id="auth-form">
                     <div class="form-login">
                         <div class="label">Email</div>
                         <div class="row">
@@ -54,7 +56,7 @@
                 <div class="extra-inf">
                     <a href="#" class="extra-option">Login with Guest/Client access?</a>
                     <br>
-                    <a href="register">Register?</a>
+                    <a href="./register">Register?</a>
                 </div>
             </div>
         </div>

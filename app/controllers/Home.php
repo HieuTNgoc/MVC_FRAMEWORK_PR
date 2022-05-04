@@ -1,11 +1,17 @@
 <?php
-class Pages extends Controller
+class Home extends Controller
 {
 	public function __construct()
 	{
 		$this->userModel = $this->model('User');
 	}
-	public function index()
+
+	/**
+	 * Views home page
+	 *
+	 * @return void
+	 */
+	public function home()
 	{
 		$users = $this->userModel->getUsers();
 
@@ -14,7 +20,10 @@ class Pages extends Controller
 			'users' => $users
 		];
 
-		$this->view('pages/index', $data);
+		$this->view('users/home', $data);
 	}
 
 }
+
+$home = new Home();
+$home->home();

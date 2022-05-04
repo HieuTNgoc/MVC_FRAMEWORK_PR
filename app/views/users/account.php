@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tài khoản - Base Account</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/account.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/account.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -18,7 +18,7 @@
             <div class="items">
                 <div class="item">
                     <div class='avatar'>
-                        <img src="../public/img/avt.jpg" alt="" srcset="">
+                        <img src="./public/img/avt.jpg" alt="" srcset="">
                     </div>
                 </div>
                 <div class="item">
@@ -53,7 +53,9 @@
                     <div class="info">Ứng dụng</div>
                 </div>
 
-                <div class="footer">Đăng xuất</div>
+                <div class="footer">
+                    <a href="./logout">Đăng xuất</a>    
+                </div>
             </div>
         </div>
         <div class="content">
@@ -87,7 +89,7 @@
                     </div>
                     <div class="main">
                         <div class="img upload-img">
-                            <img src="../public/img/avt.jpg" alt="Avatar">
+                            <img src="./public/img/avt.jpg" alt="Avatar">
                             <div class="upload-form">
                                 <form action="" method="post">
                                     <input type="file" name="image" id="" hidden>
@@ -97,11 +99,11 @@
                         </div>
                         <div class="detail-info">
                             <div class="title">
-                                Trần Ngọc Hiếu
+                                <?php echo $_SESSION['username']?>
                             </div>
                             <div class="sub-title">Trainee & Internship</div>
                             <div class="info">
-                                <b>Địa chỉ email:</b> hieu.tran@base.vn
+                                <b>Địa chỉ email:</b> <?php echo $_SESSION['email']?>
                             </div>
                             <div class="info">
                                 <b>Số điện thoại:</b> 0928374831
@@ -170,7 +172,9 @@
             <div class="menu">
                 <div class="top box">
                     <div class="heading">
-                        Full Name Here
+                        <?php
+                            echo $_SESSION['username'];
+                        ?>
                     </div>
                     <div class="email-inf">
                         @username - username@base.vn
