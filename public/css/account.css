@@ -25,6 +25,11 @@
     margin: 20px;
 }
 
+.left-bar .items .footer a {
+    text-decoration: none;
+    color: rgb(155, 146, 146);
+}
+
 #master>div.left-bar>div>div.footer:hover {
     color: white;
     font-weight: 500;

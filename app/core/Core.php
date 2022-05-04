@@ -3,9 +3,9 @@
 class Core
 {
 	// Auto Load if do not exist any controller in controller folder
-	protected $current_controller = 'Pages';
+	protected $current_controller = 'Home';
 	// Method of the currentController
-	protected $current_method = 'index';
+	protected $current_method = 'home';
 	// Arr to fetch URL 
 	protected $params = [];
 
@@ -18,6 +18,7 @@ class Core
 		if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
 			// Set a new controller
 			$this->current_controller = ucwords($url[0]);
+			$this->current_method = $url[0];
 			unset($url[0]);
 		}
 

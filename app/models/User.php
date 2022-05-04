@@ -74,15 +74,13 @@
 		 */
 		public function findUserByEmail($email) {
 			// Prepared statement
-			$this->db->query('UPDATE users SET email = :email WHERE email = :email');
-
+			$this->db->query('SELECT * FROM users WHERE email = :email');
 
 			// Email param will be bind with the email variable
 			$this->db->bind(':email', $email);
-			
-			// Execute
-			$this->db->execute();
 
+			$this->db->execute();
+			return $this->db->rowCount();
 			// Check if email already registered
 			if ($this->db->rowCount() > 0) {
 				return true;
@@ -99,14 +97,14 @@
 		 */
 		public function findUserByUsername($username) {
 			// Prepared statement
-			$this->db->query('UPDATE users SET username = :username WHERE username = :username');
+			$this->db->query('SELECT * FROM users WHERE username = :username');
 
 			// Bind username data
 			$this->db->bind(':username', $username);
 
-			// Execute
 			$this->db->execute();
 
+			return $this->db->rowCount();
 			// Check if username already registered
 			if ($this->db->rowCount() > 0) {
 				return true;
