@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./public/css/style.css">
     <link rel="stylesheet" href="./public/css/login.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="./public/js/javascript.js"></script>
+    <script src="./public/js/login.js"></script>
 </head>
 
 <body>
@@ -43,7 +43,7 @@
                     <div class="login-check-box">
                         <input type="checkbox" name="saved" id="saved">Keep me login
                     </div>
-                    <button class="submit" onclick="submit_form()">Login to start working</button>
+                    <button id="submit" onclick="submit_form()">Login to start working</button>
                     <div class="oauth">
                         <div class="label-center">
                             <span>  Or, login via single sign-on  </span>
@@ -61,6 +61,27 @@
             </div>
         </div>
         <div class="right-background">
+        </div>
+        <div id="response-model">
+            <div class="content-model">
+				<div class="close-btn">
+					<div class="icon">
+                        <i class="material-icons">close</i>
+                    </div>
+				</div>
+				<table class="header-content">
+					<tbody>
+						<tr>
+							<td><i class="material-icons">error_outline</i></td>
+                    		<td><div class="detail"></div></td>
+						</tr>
+					</tbody>
+                    
+				</table>
+				<div class="footer-content close-btn">
+					OK
+				</div>
+            </div>
         </div>
     </div>
 </body>
