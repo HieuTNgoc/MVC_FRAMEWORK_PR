@@ -80,7 +80,7 @@
 			$this->db->bind(':email', $email);
 
 			$this->db->execute();
-			return $this->db->rowCount();
+			
 			// Check if email already registered
 			if ($this->db->rowCount() > 0) {
 				return true;
@@ -104,7 +104,6 @@
 
 			$this->db->execute();
 
-			return $this->db->rowCount();
 			// Check if username already registered
 			if ($this->db->rowCount() > 0) {
 				return true;
