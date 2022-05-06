@@ -71,6 +71,26 @@
 		}
 
 		/**
+		 * Load user data by user_id
+		 *
+		 * @param [string] $user_id
+		 * @return mixed/false
+		 */
+		public function loadUserData($user_id) {
+			$this->db->query("SELECT * FROM users WHERE user_id = :user_id");
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			
+			$row = $this->db->single();
+
+			if (!$row) {
+				return false;
+			}
+			return $row;
+		}
+
+		/**
 		 * Find user by email address in DB
 		 *
 		 * @param [string] $email

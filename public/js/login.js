@@ -12,14 +12,21 @@ $(document).ready(function() {
                 url: "./login",
                 type: "POST",
                 data: { email: email, password: password },
+                dataType: "json",
                 success: function(data) {
-                    // alert(data);
-                    if (data == 'success') {
-                        window.location.href = 'http://localhost/mvc_framework/login/account';
-                    } else {
-                        $('#response-model').css("display", "flex");
-                        $('#response-model .detail').html(data);
+                    if (!data.success) {
+                        return alert('Login Fail');
                     }
+
+                    alert(data.msg);
+                    window.location.href = 'http://localhost/mvc_framework/account';
+                    // alert(data);
+                    // if (data == 'success') {
+                    //     window.location.href = 'http://localhost/mvc_framework/account';
+                    // } else {
+                    //     $('#response-model').css("display", "flex");
+                    //     $('#response-model .detail').html(data);
+                    // }
                 }
             });
         } else {

@@ -25,6 +25,12 @@ class Core
 					$this->current_method = 'home';
 					if (isset($url[1])) unset($url[1]);
 				}
+			} else {
+				if ($url[0] == 'login') {
+					$this->current_controller = 'Home';
+					$this->current_method = 'home';
+					if (isset($url[1])) unset($url[1]);
+				}
 			}
 			unset($url[0]);			
 		}

@@ -1,8 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    border: border-box;
     font-family: 'Roboto', 'Segoe UI', sans-serif;
+    box-sizing: border-box;
 }
 
 #master {

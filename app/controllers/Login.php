@@ -66,7 +66,10 @@ class Login extends Controller
 			$response = '';
 			if ($data['email_error'] != '') $response = $response . "<br>" . $data['email_error'];
 			if ($data['password_error'] != '') $response = $response . "<br>" . $data['password_error'];
-			exit($response);
+			die(json_encode([
+				'success'	=>	false,
+				'msg'	=>	$response
+			]));
 		}
 
 		$this->view('users/login', $data);
@@ -82,7 +85,10 @@ class Login extends Controller
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
-		exit('success');
+		die(json_encode([
+			'success'	=>	true,
+			'msg'	=>	'Login Successfully'
+		]));
 		header('location: ' . URLROOT . '/account');
 	}
 }
