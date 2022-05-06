@@ -98,7 +98,7 @@ class Register extends Controller
 				if ($this->userModel->register($data)) {
 					// Redirect to the login page
 					exit('success');
-					header('location: ./login');
+					header('location: ' . URLROOT . '/login');
 				} else {
 					die('Something went wrong.');
 				}

@@ -22,6 +22,10 @@
 			
 			$row = $this->db->single();
 
+			if (!$row) {
+				return false;
+			}
+
 			$hashed_password = $row->password;
 
 			if (password_verify($password, $hashed_password)) {
