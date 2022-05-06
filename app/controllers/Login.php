@@ -37,25 +37,36 @@ class Login extends Controller
 			if (empty($data['email'])) {
 				$data['email_error'] = 'Please enter email address.';
 			} elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-				$data['email_error'] = 'Please enter the correct format.';
+				$data['email_error'] = 'Please enter the correct email format.';
 			}
 
-			// Validate password
+			//Minimum eight characters, at least one letter and one number
+			$passwordValidation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
+
+			// Validate password on length(8) and numeric values 
 			if (empty($data['password'])) {
 				$data['password_error'] = 'Please enter the password.';
+			} elseif (strlen($data['password']) < 8) {
+				$data['password_error'] = 'Password must be at least 8 characters.';
+			} elseif (!preg_match($passwordValidation, $data['password'])) {
+				$data['password_error'] = 'Please enter the correct password format.';
 			}
 
 			// Check if all errors are not empty
 			if (empty($data['email_error']) && empty($data['password_error'])) {
+				
 				$logged_in_user = $this->userModel->login($data['email'], $data['password']);
 				
 				if ($logged_in_user) {
 					$this->create_user_session($logged_in_user);
 				} else {
 					$data['password_error'] = 'Password or Email is incorrect. Please try again!';
-					$this->view('users/login', $data);
 				}
 			}
+			$response = '';
+			if ($data['email_error'] != '') $response = $response . "<br>" . $data['email_error'];
+			if ($data['password_error'] != '') $response = $response . "<br>" . $data['password_error'];
+			exit($response);
 		}
 
 		$this->view('users/login', $data);
@@ -71,6 +82,7 @@ class Login extends Controller
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
-		header('location: ./account');
+		exit('success');
+		header('location: ' . URLROOT . '/account');
 	}
 }

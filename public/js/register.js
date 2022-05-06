@@ -16,9 +16,12 @@ $(document).ready(function() {
                 data: { username: username, email: email, password: password, confirm_password: confirm_password },
                 success: function(data) {
                     //alert(data);
-                    if (data == 'success') window.location.href = './login';
-                    $('#response-model').css("display", "flex");
-                    $('#response-model .detail').html(data);
+                    if (data == 'success') {
+                        window.location.href = 'http://localhost/mvc_framework/login';
+                    } else {
+                        $('#response-model').css("display", "flex");
+                        $('#response-model .detail').html(data);
+                    }
                 }
             });
         } else {

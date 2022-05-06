@@ -15,15 +15,22 @@ class Core
 		$url = $this->getUrl();
 
 		// Look in 'controller' for first value, ucwords will capitalize first letter
-		if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+		if (file_exists(APPROOT . '\/controllers\/' . ucwords($url[0]) . '.php')) {
 			// Set a new controller
 			$this->current_controller = ucwords($url[0]);
 			$this->current_method = $url[0];
-			unset($url[0]);
+			if (!isLoggedIn()) {
+				if ($url[0] != 'login' && $url[0] != 'home' && $url[0] != 'register') {
+					$this->current_controller = 'Home';
+					$this->current_method = 'home';
+					if (isset($url[1])) unset($url[1]);
+				}
+			}
+			unset($url[0]);			
 		}
 
 		// Import the controller 
-		require_once '../app/controllers/' . $this->current_controller . '.php';
+		require_once APPROOT . '\/controllers\/' . $this->current_controller . '.php';
 		$this->current_controller = new $this->current_controller;
 
 		if (isset($url[1])) {

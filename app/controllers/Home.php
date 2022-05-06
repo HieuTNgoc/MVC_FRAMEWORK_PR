@@ -24,6 +24,3 @@ class Home extends Controller
 	}
 
 }
-
-$home = new Home();
-$home->home();
