@@ -14,14 +14,19 @@ $(document).ready(function() {
                 url: "./register",
                 type: "POST",
                 data: { username: username, email: email, password: password, confirm_password: confirm_password },
+                dataType: "json",
                 success: function(data) {
-                    //alert(data);
-                    if (data == 'success') {
-                        window.location.href = 'http://localhost/mvc_framework/login';
-                    } else {
-                        $('#response-model').css("display", "flex");
-                        $('#response-model .detail').html(data);
+                    $('#response-model').css("display", "flex");
+                    $('#response-model .detail').html(data.msg);
+                    if (!data.success) {
+                        return;
                     }
+                    $('#response-model .material-icons').css("color", "rgb(66 205 32)");
+                    $('#response-model .content-model .footer-content').css("color", "rgb(66 205 32)");
+                    $('#response-model .content-model .footer-content:hover').css({ "background-color": "rgb(218 239 209)", "color": "rgb(66 205 32)" });
+                    $('#response-model .content-model .footer-content').click(function() {
+                        window.location.href = 'http://localhost/mvc_framework/login';
+                    });
                 }
             });
         } else {

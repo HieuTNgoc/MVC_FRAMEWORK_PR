@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="<?php echo URLROOT; ?>/public/js/register.js"></script>
+    <script src="<?php echo URLROOT; ?>/public/js/script.js"></script>
 </head>
 
 <body>
@@ -59,6 +60,7 @@
                         <div class="row">
                             <div class="label">Password</div>
                             <input type="password" id="password" name="password" placeholder="Your password" required>
+                            <span id="show-pass-btn" class="show-btn"><i class="material-icons">vpn_key</i></span>
                             <span class="invalidFeedback">
                                 <?php echo $data['password_error'];?>
                             </span>
@@ -67,6 +69,7 @@
                         <div class="row">
                             <div class="label">Confirm Password</div>
                             <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+                            <span id="show-pass1-btn" class="show-btn"><i class="material-icons">vpn_key</i></span>
                             <span class="invalidFeedback">
                                 <?php echo $data['confirm_password_error']; ?>
                             </span>

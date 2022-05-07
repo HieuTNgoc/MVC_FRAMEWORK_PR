@@ -11,8 +11,7 @@ class Login extends Controller
 	 *
 	 * @return void redirect to login page or account page
 	 */
-	public function login()
-	{
+	public function login() {
 		$data = [
 			'username' => '',
 			'email' => '',
@@ -89,6 +88,6 @@ class Login extends Controller
 			'success'	=>	true,
 			'msg'	=>	'Login Successfully'
 		]));
-		header('location: ' . URLROOT . '/account');
+		// header('location: ' . URLROOT . '/account');
 	}
 }

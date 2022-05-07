@@ -35,3 +35,42 @@
     background-repeat: repeat-x;
     background-position: right center;
 }
+
+input:focus-visible {
+    outline: 1px solid rgba(66, 184, 20, 0.7);
+}
+
+
+/* css btn show password */
+
+.row .show-btn {
+    position: absolute;
+    right: 10px;
+    color: #a9b3ab69;
+    top: 45%;
+    cursor: pointer;
+    display: none;
+}
+
+.row .show-btn .material-icons {
+    font-size: 1.4em;
+}
+
+.row input:valid~.show-btn {
+    display: block;
+}
+
+.logo-login {
+    cursor: pointer;
+}
+
+
+/* css over layout message success/error */
+
+.success {
+    color: rgb(66 205 32);
+}
+
+.success:hover {
+    background-color: rgb(218 239 209);
+}

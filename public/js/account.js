@@ -14,20 +14,21 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#submit').click(function(e) {
         e.preventDefault();
-        var email = $('#email').val();
-        var password = $('#password').val();
-        // alert(email + " " + password);
-        // var data = $('form#form_input').serialize();
-
-        if (email != '' && password != '') {
-            $.ajax({
-                url: "./account",
-                type: "POST",
-                data: { email: email, password: password },
-                success: function(data) {
-
-                }
-            });
-        }
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var position = $('#position').val();
+        var img_url = $('#img_url').val().split('\\').pop();
+        var phone = $('#phone').val();
+        var address = $('#address');
+        alert(url_img);
+        $.ajax({
+            url: "./account",
+            type: "POST",
+            data: { first_name: first_name, last_name: last_name, position: position, img_url: img_url, phone: phone },
+            success: function(data) {
+                alert(data);
+                location.reload();
+            }
+        });
     });
 });
