@@ -14,31 +14,22 @@ $(document).ready(function() {
                 data: { email: email, password: password },
                 dataType: "json",
                 success: function(data) {
+                    $('#response-model').css("display", "flex");
+                    $('#response-model .detail').html(data.msg);
                     if (!data.success) {
-                        return alert('Login Fail');
+                        return;
                     }
-
-                    alert(data.msg);
-                    window.location.href = 'http://localhost/mvc_framework/account';
-                    // alert(data);
-                    // if (data == 'success') {
-                    //     window.location.href = 'http://localhost/mvc_framework/account';
-                    // } else {
-                    //     $('#response-model').css("display", "flex");
-                    //     $('#response-model .detail').html(data);
-                    // }
+                    $('#response-model .material-icons').css("color", "rgb(66 205 32)");
+                    $('#response-model .content-model .footer-content').css("color", "rgb(66 205 32)");
+                    $('#response-model .content-model .footer-content:hover').css({ "background-color": "rgb(218 239 209)", "color": "rgb(66 205 32)" });
+                    $('#response-model .content-model .footer-content').click(function() {
+                        window.location.href = 'http://localhost/mvc_framework/account';
+                    });
                 }
             });
         } else {
             $('#response-model').css("display", "flex");
             $('#response-model .detail').html("All the Fields are required! Please fill all.");
         }
-    });
-});
-
-// Login with ajax jquery 
-$(document).ready(function() {
-    $('.close-btn').click(function() {
-        $('#response-model').css("display", "none");
     });
 });

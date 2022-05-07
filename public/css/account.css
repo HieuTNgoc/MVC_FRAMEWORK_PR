@@ -508,6 +508,7 @@
     width: 47%;
     font-weight: 500;
     padding: 10px;
+    cursor: pointer;
 }
 
 .content-model .footer-content .btn-skip {

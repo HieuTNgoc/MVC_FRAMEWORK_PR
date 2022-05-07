@@ -1,8 +1,7 @@
 <?php
-class Register extends Controller
-{
-	public function __construct()
-	{
+class Register extends Controller {
+	
+	public function __construct() {
 		$this->userModel = $this->model('User');
 	}
 
@@ -13,8 +12,7 @@ class Register extends Controller
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
+	public function register() {
 
 		$data = [
 			'username' => '',
@@ -42,15 +40,15 @@ class Register extends Controller
 				'confirm_password_error' => ''
 			];
 
-			$nameValidation = '/^[a-zA-Z0-9]*$/';
+			$name_validation = '/^[a-zA-Z0-9]*$/';
 
 			//Minimum eight characters, at least one letter and one number
-			$passwordValidation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
+			$password_validation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
 
 			// Validate username on letter or number
 			if (empty($data['username'])) {
 				$data['username_error'] = 'Please enter username.';
-			} elseif (!preg_match($nameValidation, $data['username'])) {
+			} elseif (!preg_match($name_validation, $data['username'])) {
 				$data['username_error'] = 'User name can only contain letters and numbers.';
 			} else {
 				// Check if username exist
@@ -76,7 +74,7 @@ class Register extends Controller
 				$data['password_error'] = 'Please enter the password.';
 			} elseif (strlen($data['password']) < 8) {
 				$data['password_error'] = 'Password must be at least 8 characters.';
-			} elseif (!preg_match($passwordValidation, $data['password'])) {
+			} elseif (!preg_match($password_validation, $data['password'])) {
 				$data['password_error'] = 'Please enter the correct password format.';
 			}
 
@@ -96,19 +94,35 @@ class Register extends Controller
 				
 				// Register user from model function
 				if ($this->userModel->register($data)) {
-					// Redirect to the login page
-					exit('success');
-					header('location: ' . URLROOT . '/login');
+					die(json_encode([
+						'success' => true,
+						'msg' => 'Register Successfully!'
+					]));
+					// header('location: ' . URLROOT . '/login');
 				} else {
-					die('Something went wrong.');
+					die(json_encode([
+						'success' => false,
+						'msg' => 'Something went wrong with create user function (database).'
+					]));
 				}
 			} 
 			$response = '';
-			if ($data['username_error'] != '') $response = $response . "<br>" . $data['username_error'];
-			if ($data['email_error'] != '') $response = $response . "<br>" . $data['email_error'];
-			if ($data['password_error'] != '') $response = $response . "<br>" . $data['password_error'];
-			if ($data['confirm_password_error'] != '') $response = $response . "<br>" . $data['confirm_password_error'];
-			exit($response);
+			if ($data['username_error'] != '') {
+				$response = $response . "<br>" . $data['username_error'];
+			}
+			if ($data['email_error'] != '') {
+				$response = $response . "<br>" . $data['email_error'];
+			}
+			if ($data['password_error'] != '') { 
+				$response = $response . "<br>" . $data['password_error'];
+			}
+			if ($data['confirm_password_error'] != '') {
+				$response = $response . "<br>" . $data['confirm_password_error'];
+			}
+			die(json_encode([
+				'success' => false,
+				'msg' => $response
+			]));
 		}
 		$this->view('users/register', $data);
 	}	

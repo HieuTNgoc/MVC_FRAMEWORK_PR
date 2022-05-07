@@ -19,7 +19,7 @@ class Home extends Controller
 			'title' => 'home page',
 			'users' => $users
 		];
-
+		
 		$this->view('users/home', $data);
 	}
 
