@@ -2,7 +2,7 @@
 	require_once APPROOT . '/views/includes/head.php';
 ?>
 
-<div id="section-landing">
+<div id="section-landing" class='top-nav'>
 	<?php
 		require_once APPROOT . '/views/includes/body.php';
 	?>

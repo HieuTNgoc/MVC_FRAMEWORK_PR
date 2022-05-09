@@ -23,7 +23,7 @@
 						<img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['img_url']; ?>" alt="" srcset="">
 					</div>
 				</div>
-				<div class="item">
+				<div class="item hover">
 					<div class="icon">
 						<i class="material-icons">account_circle</i>
 					</div>
@@ -55,8 +55,11 @@
 					<div class="info">Ứng dụng</div>
 				</div>
 
-				<div class="footer">
-					<a href="<?php echo URLROOT; ?>/logout">Đăng xuất</a>
+				<div class="footer logout-btn">
+					<div class="icon">
+						<i class="material-icons">directions_run</i>
+					</div>
+					<a href="#">Đăng xuất</a>
 				</div>
 			</div>
 		</div>
@@ -91,7 +94,13 @@
 					</div>
 					<div class="main">
 						<div class="img upload-img">
-							<img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['img_url']; ?>" alt="Avatar">
+							<div class="form-detail">
+								<img id="img-upload" src="<?php echo URLROOT; ?>/public/img/<?php echo $data['img_url']; ?>" alt="Avatar">
+								<form method='post'>
+									<input type="file" name="img_url_upload" id="img_url_upload">
+								</form>
+							</div>
+							
 							<div class="upload-form">
 								<form action="" method="post">
 									<input type="file" name="image" id="" hidden>
@@ -183,13 +192,13 @@
 				<div class="box">
 					<div class="sub-heading">Thông tin tài khoản</div>
 					<div class="items">
-						<div class="item">
+						<div class="item active">
 							<div class="menu-icon">
 								<i class="material-icons">settings</i>
 							</div>
 							<div class="info">Tài khoản</div>
 						</div>
-						<div class="item">
+						<div class="item change-acc btn">
 							<div class="menu-icon">
 								<i class="material-icons">create</i>
 							</div>
@@ -268,7 +277,7 @@
 				<div class="clear"></div>
 			</div>
 		</div>
-		<div id="response-model">
+		<div class="response-model update-info">
 			<div class="content-model">
 				<form method="post" >
 					<div class="close-btn">
@@ -385,6 +394,30 @@
 				</form>
 			</div>
 		</div>
+
+		<div id="response-model">
+            <div class="content-model">
+				<div class="close-btn">
+					<div class="icon">
+                        <i class="material-icons">close</i>
+                    </div>
+				</div>
+				<table class="header-content">
+					<tbody>
+						<tr>
+							<td><i class="material-icons">notifications_none</i></td>
+                    		<td><div class="detail">Do you really want to logout?</div></td>
+						</tr>
+					</tbody>
+                    
+				</table>
+				<div class="footer-content">
+					<span id='no-msg' class='close-btn'>NO</span>
+					<span id='yes-msg'>YES</span>
+					<div class="clear"></div>
+				</div>
+            </div>
+        </div>
 	</div>
 </body>
 

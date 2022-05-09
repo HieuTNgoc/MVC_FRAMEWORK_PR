@@ -24,7 +24,7 @@ $(document).ready(function() {
                     $('#response-model .material-icons').css("color", "rgb(66 205 32)");
                     $('#response-model .content-model .footer-content').css("color", "rgb(66 205 32)");
                     $('#response-model .content-model .footer-content:hover').css({ "background-color": "rgb(218 239 209)", "color": "rgb(66 205 32)" });
-                    $('#response-model .content-model .footer-content').click(function() {
+                    $('#response-model .content-model .close-btn').click(function() {
                         window.location.href = 'http://localhost/mvc_framework/login';
                     });
                 }

@@ -75,17 +75,16 @@
 		 *
 		 * @return true/false
 		 */
-		public function updateUser($first_name, $last_name, $img_url, $position, $user_id) {
-			$this->db->query("UPDATE users SET first_name = :first_name, last_name = :last_name , img_url = :img_url, position = :position WHERE user_id = :user_id");
+		public function updateUser($first_name, $last_name, $position, $phone, $address, $user_id) {
+			$this->db->query("UPDATE users SET first_name = :first_name, last_name = :last_name, position = :position, phone = :phone, address = :address WHERE user_id = :user_id");
 
 			// Bind value
 			$this->db->bind(':user_id', $user_id);
 			$this->db->bind(':first_name', $first_name);
 			$this->db->bind(':last_name', $last_name);
 			$this->db->bind(':position', $position);
-			$this->db->bind(':img_url', $img_url);
-			// $this->db->bind(':phone', $phone);
-			// $this->db->bind(':address', $address);
+			$this->db->bind(':phone', $phone);
+			$this->db->bind(':address', $address);
 			
 			$this->db->execute();
 			
@@ -96,6 +95,26 @@
 			}
 		}
 
+		/**
+		 * Update user img
+		 *
+		 * @return true/false
+		 */
+		public function updateUserImg($img_url, $user_id) {
+			$this->db->query("UPDATE users SET img_url = :img_url WHERE user_id = :user_id");
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			$this->db->bind(':img_url', $img_url);
+			
+			$this->db->execute();
+			
+			if ($this->db->rowCount() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
 		/**
 		 * Load user data by user_id
 		 *

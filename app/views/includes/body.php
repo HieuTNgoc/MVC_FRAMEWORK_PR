@@ -4,7 +4,7 @@
             <a href="<?php echo URLROOT; ?>/home">Home</a>
         </li>
         <div>
-            <?php var_dump($_SESSION); ?>
+            
         </div>
         <li class="btn-login">
             <?php if (isLoggedIn()) : ?>
@@ -12,6 +12,10 @@
             <?php else : ?>
                 <a href="<?php echo URLROOT; ?>/login">Login</a>
             <?php endif; ?>
+        </li>
+        <br>
+        <li>
+            <a href="<?php echo URLROOT; ?>/account">Account</a>
         </li>
     </ul>
 </nav>
