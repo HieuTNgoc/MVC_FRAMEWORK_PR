@@ -4,7 +4,7 @@ $(document).ready(function() {
         $('.response-model.update-info').css("display", "flex");
     });
 
-    // Turn off over layout edit account
+    // Turn off all over layout 
     $('.close-btn').click(function(event) {
         event.preventDefault();
         $('.response-model.update-info').css("display", "none");
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 // Update user data with ajax jquery 
 $(document).ready(function() {
-    $('input').keypress(function(event) {
+    $('.response-model.update-info input').keypress(function(event) {
         var key_code = (event.keyCode ? event.keyCode : event.which);
         if (key_code == '13') {
             event.preventDefault();
@@ -92,5 +92,62 @@ $(document).ready(function() {
 
     $('#yes-msg').click(function() {
         window.location.href = 'http://localhost/mvc_framework/logout';
+    });
+});
+
+// change password btn
+$(document).ready(function() {
+    //Turn on over layout change password
+    $('.change-pass.btn').click(function() {
+        $('.response-model.change-password').css('display', 'flex');
+    });
+
+    // Turn off over layout change password
+    $('.close-btn').click(function() {
+        $('.response-model.change-password').css('display', 'none');
+    });
+});
+
+// change password with ajax
+$(document).ready(function() {
+    $('.response-model.change-password').keypress(function(event) {
+        var key_code = (event.keyCode ? event.keyCode : event.which);
+        if (key_code == '13') {
+            event.preventDefault();
+            alert('You just click enter, form will submit now...');
+            return $('#submit-pass').click();
+        }
+    });
+    $('#submit-pass').click(function(event) {
+        event.preventDefault();
+        var old_pass = $('#old_pass').val();
+        var new_pass = $('#new_pass').val();
+        var confirm_pass = $('#confirm_pass').val();
+        var option = $('#logout-selector').val();
+        if (old_pass != '' && new_pass != '' && confirm_pass != '' && option != '') {
+            if (new_pass != confirm_pass) {
+                return alert('Confirm password does not match! Try again...');
+            }
+            $.ajax({
+                url: "./account/changePassword",
+                type: "POST",
+                data: { old_pass: old_pass, new_pass: new_pass },
+                dataType: "json",
+                success: function(data) {
+                    if (!data.success) {
+                        return alert(data.msg);
+                    }
+                    alert(data.msg);
+                    if (option == 'no') return location.reload();
+                    alert('Your account will logout now!')
+                    window.location.href = 'http://localhost/mvc_framework/logout';
+                },
+                error: function() {
+                    return alert('Nothing change! Please try again...');
+                }
+            });
+        } else {
+            return alert('All the Fields are required! Please fill all.');
+        }
     });
 });

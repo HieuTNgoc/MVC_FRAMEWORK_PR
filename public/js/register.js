@@ -22,6 +22,7 @@ $(document).ready(function() {
                         return;
                     }
                     $('#response-model .material-icons').css("color", "rgb(66 205 32)");
+                    $('.header-content i.material-icons').html("check");
                     $('#response-model .content-model .footer-content').css("color", "rgb(66 205 32)");
                     $('#response-model .content-model .footer-content:hover').css({ "background-color": "rgb(218 239 209)", "color": "rgb(66 205 32)" });
                     $('#response-model .content-model .close-btn').click(function() {

@@ -13,6 +13,9 @@ class Logout extends Controller
 		// unset($_SESSION['username']);
 		// unset($_SESSION['email']);
 		session_destroy();
+		if (isset($_COOKIE['user'])){
+			setcookie('user', '', time() - (60*60*24*30));
+		}
 		header('location: ./home');
     }
 }
