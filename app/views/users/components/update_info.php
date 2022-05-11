@@ -1,6 +1,6 @@
 <div class="response-model update-info">
     <div class="content-model">
-        <form method="post">
+        <form id="update-info" method="post">
             <div class="close-btn">
                 <div class="icon">
                     <i class="material-icons">close</i>
@@ -67,7 +67,7 @@
                         <div class="sub-title">Ảnh đại diện</div>
                     </div>
                     <div class="form-detail">
-                        <input type="file" name="img_url" id="img_url">
+                        <input type="file" accept="image/*"  name="img_url" id="img_url">
                     </div>
                     <div class="clear"></div>
                 </div>

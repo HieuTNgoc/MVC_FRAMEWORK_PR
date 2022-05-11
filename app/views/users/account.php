@@ -49,9 +49,9 @@
 					<div class="main">
 						<div class="img upload-img">
 							<div class="form-detail">
-								<img id="img-upload" src="<?php echo URLROOT; ?>/public/img/<?php echo $data['img_url']; ?>" alt="Avatar">
+								<img id="img-upload" src="<?php echo URLROOT; ?>/public/img/<?php echo $data['username'] . '.png'; ?>" alt="Avatar">
 								<form method='post'>
-									<input type="file" name="img_url_upload" id="img_url_upload">
+									<input type="file" accept="image/*" name="img_url_upload" id="img_url_upload">
 								</form>
 							</div>
 							

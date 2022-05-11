@@ -26,22 +26,33 @@ $(document).ready(function() {
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
         var position = $('#position').val();
-        var img_url = $('#img_url').val().split('\\').pop();
         var phone = $('#phone').val();
         var address = $('#address').val();
-        // alert(address);
+
+        var form_data = new FormData();
+        var file = $('#img_url').get(0).files[0];
+
+        form_data.append('file', file);
+
+        form_data.append('first_name', first_name);
+        form_data.append('last_name', last_name);
+        form_data.append('position', position);
+        form_data.append('phone', phone);
+        form_data.append('address', address);
+
         $.ajax({
-            url: "./account",
-            type: "POST",
-            data: { first_name: first_name, last_name: last_name, position: position, img_url: img_url, phone: phone, address: address },
+            url: "./account/updateUser",
             dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'POST',
             success: function(data) {
-                // alert(data);
-                if (!data.success) {
-                    return alert(data.msg);
-                }
                 alert(data.msg);
-                location.reload();
+                if (data.success) {
+                    location.reload();
+                }
             },
             error: function() {
                 return alert('Nothing change! Please try again...');
@@ -57,18 +68,23 @@ $(document).ready(function() {
     });
     $('#img_url_upload').change(function(event) {
         event.preventDefault();
-        var img_url = $('#img_url_upload').val().split('\\').pop();
+        var file = this.files[0];
+        var form_data = new FormData();
+        form_data.append('file', file);
+        // alert(file.name);
         $.ajax({
-            url: "./account/updateUserImg",
-            type: "POST",
-            data: { img_url: img_url },
+            url: './account/updateUserImg',
             dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'POST',
             success: function(data) {
-                if (!data.success) {
-                    return alert(data.msg);
-                }
                 alert(data.msg);
-                location.reload();
+                if (data.success) {
+                    location.reload();
+                }
             },
             error: function() {
                 return alert('Nothing change! Please try again...');

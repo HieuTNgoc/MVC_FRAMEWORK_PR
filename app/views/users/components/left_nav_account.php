@@ -2,7 +2,7 @@
     <div class="items">
         <div class="item">
             <div class='avatar'>
-                <img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['img_url']; ?>" alt="" srcset="">
+                <img src="<?php echo URLROOT; ?>/public/img/<?php echo $data['username'] . '.png'; ?>" alt="" srcset="">
             </div>
         </div>
         <div class="item hover">

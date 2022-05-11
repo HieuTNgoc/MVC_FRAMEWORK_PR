@@ -93,7 +93,7 @@ class Login extends Controller
 	 * @param [mixed] $user
 	 * @return void
 	 */
-	public function create_user_session($user, $saved){
+	private function create_user_session($user, $saved){
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
