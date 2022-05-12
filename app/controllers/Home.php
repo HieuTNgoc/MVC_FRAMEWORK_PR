@@ -3,7 +3,9 @@ class Home extends Controller
 {
 	public function __construct()
 	{
-		$this->userModel = $this->model('User');
+		if ($this->userModel == null) {
+			$this->userModel = $this->model('User');
+		}
 	}
 
 	/**
@@ -11,16 +13,9 @@ class Home extends Controller
 	 *
 	 * @return void
 	 */
-	public function home()
+	public function index()
 	{
-		$users = $this->userModel->getUsers();
-
-		$data = [
-			'title' => 'home page',
-			'users' => $users
-		];
-		
-		$this->view('users/home', $data);
+		$this->view('users/home');
 	}
 
 }

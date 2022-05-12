@@ -2,6 +2,8 @@
 // Load the model and the view
 class Controller
 {
+	public $userModel = null;
+
 	public function model($model)
 	{
 		// Require model file
@@ -17,5 +19,13 @@ class Controller
 		} else {
 			die("View does not exists.");
 		}
+	}
+
+	public function ajaxResponse($success, $response)
+	{
+		die(json_encode([
+			'success' => $success, 
+			'msg' => $response
+		]));
 	}
 }

@@ -2,7 +2,9 @@
 class Register extends Controller {
 	
 	public function __construct() {
-		$this->userModel = $this->model('User');
+		if ($this->userModel == null) {
+			$this->userModel = $this->model('User');
+		}
 	}
 
 	/**
@@ -12,7 +14,7 @@ class Register extends Controller {
 	 *
 	 * @return void
 	 */
-	public function register() {
+	public function index() {
 
 		$data = [
 			'username' => '',
@@ -25,6 +27,33 @@ class Register extends Controller {
 			'confirm_password_error' => ''
 		];
 
+		$this->view('users/register', $data);
+	}	
+
+	/**
+	 * Register function receive data from 'post' method
+	 * Validate data
+	 * Add user to the DB
+	 *
+	 * @return void
+	 */
+	public function executeRegister() {
+
+		$data = [
+			'username' => '',
+			'email' => '',
+			'password' => '',
+			'confirm_password' => '',
+			'username_error' => '',
+			'email_error' => '',
+			'password_error' => '',
+			'confirm_password_error' => ''
+		];
+		
+		// die(json_encode([
+		// 	'success' => true,
+		// 	'msg' => 'oijsdf'
+		// ]));
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			
 			// Sanitize post data
@@ -94,18 +123,11 @@ class Register extends Controller {
 				
 				// Register user from model function
 				if ($this->userModel->register($data)) {
-					die(json_encode([
-						'success' => true,
-						'msg' => 'Register Successfully!'
-					]));
-					// header('location: ' . URLROOT . '/login');
-				} else {
-					die(json_encode([
-						'success' => false,
-						'msg' => 'Something went wrong with create user function (database).'
-					]));
-				}
+					$this->ajaxResponse(true, 'Register Successfully!');
+				} 
+				$this->ajaxResponse(false, 'Something went wrong with create user function (database).');
 			} 
+			
 			$response = '';
 			if ($data['username_error'] != '') {
 				$response = $response . "<br>" . $data['username_error'];
@@ -119,10 +141,7 @@ class Register extends Controller {
 			if ($data['confirm_password_error'] != '') {
 				$response = $response . "<br>" . $data['confirm_password_error'];
 			}
-			die(json_encode([
-				'success' => false,
-				'msg' => $response
-			]));
+			$this->ajaxResponse(false, $response);
 		}
 		$this->view('users/register', $data);
 	}	

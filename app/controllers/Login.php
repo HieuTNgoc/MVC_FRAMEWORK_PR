@@ -3,15 +3,17 @@ class Login extends Controller
 {
 	public function __construct()
 	{
-		$this->userModel = $this->model('User');
+		if ($this->userModel == null) {
+			$this->userModel = $this->model('User');
+		}
 	}
 
 	/**
-	 * Login function receive 'post' method validate data 
+	 * View login page
 	 *
-	 * @return void redirect to login page or account page
+	 * @return void
 	 */
-	public function login() {
+	public function index() {
 		$data = [
 			'username' => '',
 			'email' => '',
@@ -32,6 +34,15 @@ class Login extends Controller
 			header('location: ' . URLROOT . '/account');
 		}
 
+		$this->view('users/login', $data);
+	}
+
+	/**
+	 * Login function receive 'post' method validate data 
+	 *
+	 * @return void redirect to login page or account page
+	 */
+	public function executeLogin() {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post data
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -78,13 +89,9 @@ class Login extends Controller
 			$response = '';
 			if ($data['email_error'] != '') $response = $response . "<br>" . $data['email_error'];
 			if ($data['password_error'] != '') $response = $response . "<br>" . $data['password_error'];
-			die(json_encode([
-				'success'	=>	false,
-				'msg'	=>	$response
-			]));
+			
+			$this->ajaxResponse(false, $response);
 		}
-
-		$this->view('users/login', $data);
 	}
 
 	/**
@@ -98,18 +105,12 @@ class Login extends Controller
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
 		if ($saved) {
-			while(true) {
-				$token = uniqid('user_', true);
-				if ($this->userModel->updateToken($token, $user->user_id)){
-					setcookie('user', $token, time() + 60*60*24*30);
-					break;
-				}
+			$token = uniqid('user_', true);
+			if ($this->userModel->updateToken($token, $user->user_id)){
+				setcookie('user', $token, time() + (60*60*24*30), '/');
 			}
 		}
-		die(json_encode([
-			'success'	=>	true,
-			'msg'	=>	'Login Successfully'
-		]));
-		// header('location: ' . URLROOT . '/account');
+
+		$this->ajaxResponse(true, 'Login Successfully');
 	}
 }

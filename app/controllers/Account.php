@@ -1,18 +1,17 @@
 <?php
-class Account extends Controller
-{
-	public function __construct()
-	{
-		$this->userModel = $this->model('User');
+class Account extends Controller {
+	public function __construct() {
+		if ($this->userModel == null) {
+			$this->userModel = $this->model('User');
+		}
 	}
 
 	/**
-	 * Manage Account page
+	 * View account page
 	 *
 	 * @return void
 	 */
-	public function account()
-	{
+	public function index() {
 
 		$data = [
 			'user_id' => '',
@@ -40,8 +39,12 @@ class Account extends Controller
 		$this->view('users/account', $data);
 	}
 
-	public function updateUser()
-	{
+	/**
+	 * Update user data in DB from POST method
+	 *
+	 * @return void
+	 */
+	public function updateUser() {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$data = [
 				'first_name' => '',
@@ -91,17 +94,11 @@ class Account extends Controller
 			}
 
 			if ($response_ava == '' && $response_info == '') {
-				die(json_encode([
-					'success' => true,
-					'msg' => "Update user data successfully! "
-				]));
+				$this->ajaxResponse(true, 'Update user data successfully! ');
 			}
 
 			if ($update_data) {
-				die(json_encode([
-					'success' => true,
-					'msg' => "Update user info successfully! " . $response_ava
-				]));
+				$this->ajaxResponse(true,  'Update user info successfully! ' . $response_ava);
 			}
 
 			if ($response_ava == '') {
@@ -111,24 +108,22 @@ class Account extends Controller
 				]));
 			}
 
-			die(json_encode([
-				'success' => false,
-				'msg' => $response_ava . $response_info
-			]));
+			$this->ajaxResponse( false, $response_ava . $response_info);
 		}
 	}
-	public function updateUserImg()
-	{
+
+	/**
+	 * Upload and update user avatar in DB from POST method
+	 *
+	 * @return void
+	 */
+	public function updateUserImg() {
 
 		$username = $_SESSION['username'];
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 			if (0 < $_FILES['file']['error']) {
-				die(json_encode([
-					'success' => false,
-					'msg' => 'Error: ' . $_FILES['file']['error']
-				]));
+				$this->ajaxResponse( false, 'Error: ' . $_FILES['file']['error']);
 			} else {
 				$url = $username . '.png';
 				move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $url);
@@ -141,8 +136,13 @@ class Account extends Controller
 		}
 	}
 
-	public function changePassword()
-	{
+	
+	/**
+	 * Update user password in DB from POST method
+	 *
+	 * @return void
+	 */
+	public function changePassword() {
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post data
@@ -155,27 +155,17 @@ class Account extends Controller
 			// Validate password
 			$passwordValidation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
 			if (!preg_match($passwordValidation, $new_pass)) {
-				die(json_encode([
-					'success' => false,
-					'msg' => 'Can not update, new password with wrong format!'
-				]));
+				$this->ajaxResponse(false, 'Can not update, new password with wrong format!');
 			}
 
 			if ($this->userModel->checkPassword($old_pass, $user_id)) {
 				$new_pass = password_hash($new_pass, PASSWORD_DEFAULT);
 				$update_pass = $this->userModel->updateUserPassword($new_pass, $user_id);
 				if ($update_pass) {
-					die(json_encode([
-						'success' => true,
-						'msg' => "Update password successfully!"
-					]));
+					$this->ajaxResponse(true, 'Update password successfully!');
 				}
 			}
-
-			die(json_encode([
-				'success' => false,
-				'msg' => 'Can not update with wrong! Wrong old password!'
-			]));
+			$this->ajaxResponse(false, 'Can not update with wrong! Wrong old password!');	
 		}
 	}
 }
