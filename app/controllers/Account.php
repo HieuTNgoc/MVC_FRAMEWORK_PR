@@ -40,7 +40,8 @@ class Account extends Controller
 		$this->view('users/account', $data);
 	}
 
-	public function updateUser() {
+	public function updateUser()
+	{
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$data = [
 				'first_name' => '',
@@ -70,7 +71,7 @@ class Account extends Controller
 			$response_ava = '';
 			$response_info = '';
 			$update_data = false;
-			
+
 			if ($first_name != $data['first_name'] || $last_name != $data['last_name'] || $address != $data['address'] || $phone != $data['phone'] || $position != $data['position']) {
 				$update_data = $this->userModel->updateUser($first_name, $last_name, $position, $phone, $address, $user_id);
 			} else {
@@ -81,19 +82,21 @@ class Account extends Controller
 				if (0 < $_FILES['file']['error']) {
 					$response_ava = 'Error: ' . $_FILES['file']['error'];
 				} else {
-					move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $username . '.png');
+					$url = $username . '.png';
+					move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $url);
+					$this->userModel->updateUserImg($url, $_SESSION['user_id']);
 				}
 			} else {
 				$response_ava = "Nothing change with user avatar. ";
 			}
-			
+
 			if ($response_ava == '' && $response_info == '') {
 				die(json_encode([
 					'success' => true,
 					'msg' => "Update user data successfully! "
 				]));
 			}
-			
+
 			if ($update_data) {
 				die(json_encode([
 					'success' => true,
@@ -107,15 +110,15 @@ class Account extends Controller
 					'msg' => "Update user avatar successfully! " . $response_info
 				]));
 			}
-			
+
 			die(json_encode([
 				'success' => false,
 				'msg' => $response_ava . $response_info
 			]));
-			
 		}
 	}
-	public function updateUserImg() {
+	public function updateUserImg()
+	{
 
 		$username = $_SESSION['username'];
 
@@ -127,7 +130,9 @@ class Account extends Controller
 					'msg' => 'Error: ' . $_FILES['file']['error']
 				]));
 			} else {
-				move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $username . '.png');
+				$url = $username . '.png';
+				move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $url);
+				$this->userModel->updateUserImg($url, $_SESSION['user_id']);
 				die(json_encode([
 					'success' => true,
 					'msg' => "Update avatar successfully!"

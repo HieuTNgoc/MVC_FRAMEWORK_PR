@@ -91,12 +91,16 @@
 		 * @return true/false
 		 */
 		public function register($data) {
-			$this->db->query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
+			$this->db->query('INSERT INTO users (username, email, password, first_name, last_name, img_url) VALUES (:username, :email, :password, :first_name, :last_name, :img_url)');
 
 			// Bind values
 			$this->db->bind('username', $data['username']);
 			$this->db->bind('email', $data['email']);
 			$this->db->bind('password', $data['password']);
+			$this->db->bind('first_name', 'Chưa cập nhật');
+			$this->db->bind('last_name', 'Chưa cập nhật');
+			$this->db->bind('img_url', 'avt.png');
+
 
 			// Execute function
 			if ($this->db->execute()) {
