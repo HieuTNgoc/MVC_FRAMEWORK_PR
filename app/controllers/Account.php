@@ -69,7 +69,8 @@ class Account extends Controller
 
 			$response_ava = '';
 			$response_info = '';
-
+			$update_data = false;
+			
 			if ($first_name != $data['first_name'] || $last_name != $data['last_name'] || $address != $data['address'] || $phone != $data['phone'] || $position != $data['position']) {
 				$update_data = $this->userModel->updateUser($first_name, $last_name, $position, $phone, $address, $user_id);
 			} else {
@@ -86,28 +87,32 @@ class Account extends Controller
 				$response_ava = "Nothing change with user avatar. ";
 			}
 			
-			// if ($response_ava == '' && $response_info == '') {
-			// 	die(json_encode([
-			// 		'success' => true,
-			// 		'msg' => "Update user data successfully! "
-			// 	]));
-			// }
+			if ($response_ava == '' && $response_info == '') {
+				die(json_encode([
+					'success' => true,
+					'msg' => "Update user data successfully! "
+				]));
+			}
 			
-			// if ($update_data) {
-			// 	die(json_encode([
-			// 		'success' => true,
-			// 		'msg' => "Update user info successfully! " . $response_ava
-			// 	]));
-			// }
+			if ($update_data) {
+				die(json_encode([
+					'success' => true,
+					'msg' => "Update user info successfully! " . $response_ava
+				]));
+			}
+
+			if ($response_ava == '') {
+				die(json_encode([
+					'success' => true,
+					'msg' => "Update user avatar successfully! " . $response_info
+				]));
+			}
 			
-			// die(json_encode([
-			// 	'success' => false,
-			// 	'msg' => $response_ava . $response_info
-			// ]));
 			die(json_encode([
 				'success' => false,
 				'msg' => $response_ava . $response_info
 			]));
+			
 		}
 	}
 	public function updateUserImg() {
