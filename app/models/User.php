@@ -8,6 +8,34 @@
 		}
 
 		/**
+		 * Check password
+		 *
+		 * @param [string] $email
+		 * @param [string] $password
+		 * @return false/true
+		 */
+		public function checkPassword($password, $user_id) {
+			$this->db->query('SELECT * FROM users WHERE user_id = :user_id');
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			
+			$row = $this->db->single();
+
+			if (!$row) {
+				return false;
+			}
+
+			$hashed_password = $row->password;
+
+			if (password_verify($password, $hashed_password)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		/**
 		 * Login, find user in DB with 'user_email' and 'password'
 		 *
 		 * @param [string] $email
@@ -36,18 +64,43 @@
 		}
 
 		/**
+		 * Find user in DB with 'token' and 'password'
+		 *
+		 * @param [string] $email
+		 * @param [string] $password
+		 * @return false/mixed
+		 */
+		public function getUserByToken($token) {
+			$this->db->query('SELECT * FROM users WHERE token = :token');
+
+			// Bind value
+			$this->db->bind(':token', $token);
+			
+			$row = $this->db->single();
+
+			if (!$row) {
+				return false;
+			}
+			return $row;
+		}
+
+		/**
 		 * Register, add user to DB
 		 *
 		 * @param $data register data('user_name', 'user_email','password') 
 		 * @return true/false
 		 */
 		public function register($data) {
-			$this->db->query('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
+			$this->db->query('INSERT INTO users (username, email, password, first_name, last_name, img_url) VALUES (:username, :email, :password, :first_name, :last_name, :img_url)');
 
 			// Bind values
 			$this->db->bind('username', $data['username']);
 			$this->db->bind('email', $data['email']);
 			$this->db->bind('password', $data['password']);
+			$this->db->bind('first_name', 'Chưa cập nhật');
+			$this->db->bind('last_name', 'Chưa cập nhật');
+			$this->db->bind('img_url', 'avt.png');
+
 
 			// Execute function
 			if ($this->db->execute()) {
@@ -75,17 +128,16 @@
 		 *
 		 * @return true/false
 		 */
-		public function updateUser($first_name, $last_name, $img_url, $position, $user_id) {
-			$this->db->query("UPDATE users SET first_name = :first_name, last_name = :last_name , img_url = :img_url, position = :position WHERE user_id = :user_id");
+		public function updateUser($first_name, $last_name, $position, $phone, $address, $user_id) {
+			$this->db->query("UPDATE users SET first_name = :first_name, last_name = :last_name, position = :position, phone = :phone, address = :address WHERE user_id = :user_id");
 
 			// Bind value
 			$this->db->bind(':user_id', $user_id);
 			$this->db->bind(':first_name', $first_name);
 			$this->db->bind(':last_name', $last_name);
 			$this->db->bind(':position', $position);
-			$this->db->bind(':img_url', $img_url);
-			// $this->db->bind(':phone', $phone);
-			// $this->db->bind(':address', $address);
+			$this->db->bind(':phone', $phone);
+			$this->db->bind(':address', $address);
 			
 			$this->db->execute();
 			
@@ -95,6 +147,70 @@
 				return false;
 			}
 		}
+
+		/**
+		 * Update user img
+		 *
+		 * @return true/false
+		 */
+		public function updateUserImg($img_url, $user_id) {
+			$this->db->query("UPDATE users SET img_url = :img_url WHERE user_id = :user_id");
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			$this->db->bind(':img_url', $img_url);
+			
+			$this->db->execute();
+			
+			if ($this->db->rowCount() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+
+		/**
+		 * Update user password
+		 *
+		 * @return true/false
+		 */
+		public function updateUserPassword($password, $user_id) {
+			$this->db->query("UPDATE users SET password = :password WHERE user_id = :user_id");
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			$this->db->bind(':password', $password);
+			
+			$this->db->execute();
+			
+			if ($this->db->rowCount() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+
+		/**
+		 * Update user img
+		 *
+		 * @return true/false
+		 */
+		public function updateToken($token, $user_id) {
+			$this->db->query("UPDATE users SET token = :token WHERE user_id = :user_id");
+
+			// Bind value
+			$this->db->bind(':user_id', $user_id);
+			$this->db->bind(':token', $token);
+			
+			$this->db->execute();
+			
+			if ($this->db->rowCount() > 0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+
 
 		/**
 		 * Load user data by user_id

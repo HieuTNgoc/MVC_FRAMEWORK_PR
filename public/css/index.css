@@ -19,18 +19,14 @@ body {
     display: block;
 }
 
-
-/* .top-nav ul {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 30%;
-    top: 10%;
-} */
+.top-nav {
+    padding-left: 100px;
+}
 
 .top-nav ul li {
     display: inline-block;
     margin-left: 28px;
+    margin-top: 10px;
 }
 
 .top-nav ul li a {

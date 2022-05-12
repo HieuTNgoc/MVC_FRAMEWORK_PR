@@ -8,6 +8,6 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/index.css">
 </head>
 <body>
-    <h1>Welcome to Base Account</h1>
+    <h1 class='top-nav'>Welcome to Base Account</h1>
 </body>
 </html>

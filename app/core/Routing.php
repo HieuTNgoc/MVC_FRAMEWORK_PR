@@ -1,7 +1,6 @@
 <?php
-//Core App Class
-class Core
-{
+//Routing Class
+class Routing {
 	// Auto Load if do not exist any controller in controller folder
 	protected $current_controller = 'Home';
 	// Method of the currentController

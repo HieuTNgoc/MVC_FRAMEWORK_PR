@@ -1,15 +1,16 @@
-<div id="response-model">
+<div class="response-model update-info">
     <div class="content-model">
-        <div class="close-btn">
-            <div class="icon">
-                <i class="material-icons">close</i>
+        <form id="update-info" method="post">
+            <div class="close-btn">
+                <div class="icon">
+                    <i class="material-icons">close</i>
+                </div>
             </div>
-        </div>
-        <div class="heading-info">
-            <span>CHỈNH SỬA THÔNG TIN CÁ NHÂN</span>
-        </div>
-        <div class="content-info">
-            <form method="post">
+            <div class="heading-info">
+                <span>CHỈNH SỬA THÔNG TIN CÁ NHÂN</span>
+            </div>
+
+            <div class="content-info">
                 <div class="row user-info">
                     <div class="title-info">
                         <div class="head-title">Tên của bạn</div>
@@ -66,7 +67,7 @@
                         <div class="sub-title">Ảnh đại diện</div>
                     </div>
                     <div class="form-detail">
-                        <input type="file" name="img_url" id="img_url">
+                        <input type="file" accept="image/*"  name="img_url" id="img_url">
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -105,13 +106,12 @@
                     </div>
                     <div class="clear"></div>
                 </div>
-            </form>
-
-        </div>
-        <div class="footer-content close-btn">
-            <button class="change-info btn-skip">Bỏ qua</button>
-            <button class="change-info btn-update">Cập nhật</button>
-            <div class="clear"></div>
-        </div>
+            </div>
+            <div class="footer-content">
+                <button class="change-info btn-skip  close-btn">Bỏ qua</button>
+                <button id="submit" class="change-info btn-update">Cập nhật</button>
+                <div class="clear"></div>
+            </div>
+        </form>
     </div>
 </div>

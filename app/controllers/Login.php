@@ -20,6 +20,18 @@ class Login extends Controller
 			'password_error' => ''
 		];
 
+		if (isset($_COOKIE['user'])) {
+			$token = $_COOKIE['user'];
+			$saved_user = $this->userModel->getUserByToken($token);
+			if (!$saved_user) {
+				$this->view('users/login', $data);
+			}
+			$_SESSION['user_id'] = $saved_user->user_id;
+			$_SESSION['username'] = $saved_user->username;
+			$_SESSION['email'] = $saved_user->email;
+			header('location: ' . URLROOT . '/account');
+		}
+
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Sanitize post data
 			$_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -31,7 +43,8 @@ class Login extends Controller
 				'email_error' => '',
 				'password_error' => ''
 			];
-
+			$saved = trim($_POST['password']);
+			
 			// Validate email
 			if (empty($data['email'])) {
 				$data['email_error'] = 'Please enter email address.';
@@ -57,7 +70,7 @@ class Login extends Controller
 				$logged_in_user = $this->userModel->login($data['email'], $data['password']);
 				
 				if ($logged_in_user) {
-					$this->create_user_session($logged_in_user);
+					$this->create_user_session($logged_in_user, $saved);
 				} else {
 					$data['password_error'] = 'Password or Email is incorrect. Please try again!';
 				}
@@ -80,10 +93,19 @@ class Login extends Controller
 	 * @param [mixed] $user
 	 * @return void
 	 */
-	public function create_user_session($user){
+	private function create_user_session($user, $saved){
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
+		if ($saved) {
+			while(true) {
+				$token = uniqid('user_', true);
+				if ($this->userModel->updateToken($token, $user->user_id)){
+					setcookie('user', $token, time() + 60*60*24*30);
+					break;
+				}
+			}
+		}
 		die(json_encode([
 			'success'	=>	true,
 			'msg'	=>	'Login Successfully'

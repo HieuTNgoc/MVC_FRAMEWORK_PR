@@ -1,11 +1,10 @@
 <?php
-	require_once APPROOT . '/views/includes/head.php';
+	require_once APPROOT . '/views/users/components/head.php';
 ?>
 
-<div id="section-landing">
+<div id="section-landing" class='top-nav'>
 	<?php
-		require_once APPROOT . '/views/includes/body.php';
+		require_once APPROOT . '/views/users/components/body.php';
 	?>
-	<h1>Hello</h1>
-	<h2>Test php includes</h2>
+	<?php if (isset($_SESSION['username'])) echo '<h1>Hello</h1><h2>User: @' .$_SESSION['username'].'</h2>';?>
 </div>
