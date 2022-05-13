@@ -76,10 +76,10 @@ class Account extends Controller {
 			$response_info = '';
 			$update_data = false;
 
-			if ($first_name != $data['first_name'] || $last_name != $data['last_name'] || $address != $data['address'] || $phone != $data['phone'] || $position != $data['position']) {
-				$update_data = $this->userModel->updateUser($first_name, $last_name, $position, $phone, $address, $user_id);
-			} else {
+			if ($first_name == $data['first_name'] && $last_name == $data['last_name'] && $address == $data['address'] && $phone == $data['phone'] && $position == $data['position']) {
 				$response_info = "Nothing change with user info. ";
+			} else {
+				$update_data = $this->userModel->updateUser($first_name, $last_name, $position, $phone, $address, $user_id);
 			}
 
 			if (isset($_FILES['file'])) {
@@ -94,7 +94,7 @@ class Account extends Controller {
 				$response_ava = "Nothing change with user avatar. ";
 			}
 
-			if ($response_ava == '' && $response_info == '') {
+			if (empty($response_ava) && empty($response_info)) {
 				$this->ajaxResponse(true, 'Update user data successfully! ');
 			}
 
@@ -102,11 +102,8 @@ class Account extends Controller {
 				$this->ajaxResponse(true,  'Update user info successfully! ' . $response_ava);
 			}
 
-			if ($response_ava == '') {
-				die(json_encode([
-					'success' => true,
-					'msg' => "Update user avatar successfully! " . $response_info
-				]));
+			if (empty($response_ava)) {
+				$this->ajaxResponse(true, 'Update user avatar successfully! ' . $response_info);	
 			}
 
 			$this->ajaxResponse( false, $response_ava . $response_info);
@@ -125,15 +122,12 @@ class Account extends Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if (0 < $_FILES['file']['error']) {
 				$this->ajaxResponse( false, 'Error: ' . $_FILES['file']['error']);
-			} else {
-				$url = $username . '.png';
-				move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $url);
-				$this->userModel->updateUserImg($url, $_SESSION['user_id']);
-				die(json_encode([
-					'success' => true,
-					'msg' => "Update avatar successfully!"
-				]));
-			}
+			} 
+				
+			$url = $username . '.png';
+			move_uploaded_file($_FILES['file']['tmp_name'], 'img/' . $url);
+			$this->userModel->updateUserImg($url, $_SESSION['user_id']);
+			$this->ajaxResponse(true, 'Update avatar successfully!');	
 		}
 	}
 
