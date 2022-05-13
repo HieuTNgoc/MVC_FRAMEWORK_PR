@@ -3,7 +3,7 @@
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
-	define('DB_NAME', 'account');
+	define('DB_NAME', 'basevn');
 
 	//APPROOT
 	define('APPROOT', dirname(dirname(__FILE__)));

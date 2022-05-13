@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home - <?php echo SITENAME; ?></title>
 	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/page.home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="<?php echo URLROOT; ?>/public/js/script.js"></script>
+
 </head>
 
 <body>

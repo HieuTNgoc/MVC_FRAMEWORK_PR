@@ -1,5 +1,6 @@
-// // Click to show or hide password
 $(document).ready(function() {
+
+    // Click to show or hide password    
     $('#show-pass-btn').click(function() {
         if ($('#password').attr('type') == "password") {
             $('#password').attr('type', 'text');
@@ -10,6 +11,7 @@ $(document).ready(function() {
         }
     });
 
+    // Click to show or hide confirm password    
     $('#show-pass1-btn').click(function() {
         if ($('#confirm_password').attr('type') == "password") {
             $('#confirm_password').attr('type', 'text');
@@ -20,6 +22,7 @@ $(document).ready(function() {
         }
     });
 
+    // Click to logo and redirect to home page
     $('.logo-login').click(function() {
         window.location.href = 'http://localhost/mvc_framework/home';
     });
