@@ -6,7 +6,6 @@ $(document).ready(function() {
         $('#response-model').css("display", "none");
     });
 
-
     // Submit form and send to register controller with ajax
     $('#submit').click(function(e) {
         e.preventDefault();
