@@ -5,7 +5,7 @@
                 <i class="material-icons">close</i>
             </div>
         </div>
-        <table class="header-content">
+        <table class="header-content alert">
             <tbody>
                 <tr>
                     <td><i class="material-icons">notifications_none</i></td>

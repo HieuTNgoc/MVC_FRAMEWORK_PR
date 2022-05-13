@@ -1,21 +1,24 @@
 <?php
 class Logout extends Controller
 {
-	public function __construct() {
-		
+	/**
+	 * Views home page
+	 *
+	 * @return void
+	 */
+	public function index() {
+		$this->view('users/home');
 	}
 
-    public function logout() {
-        $data = [
-			'title' => 'Home - Base Account'
-		];
-		// unset($_SESSION['user_id']);
-		// unset($_SESSION['username']);
-		// unset($_SESSION['email']);
+	/**
+	 * Delete session and cookie
+	 *
+	 * @return void
+	 */
+    public function executeLogout() {
+		setcookie('user', null, -1, '/');
+		unset($_COOKIE['user']);
 		session_destroy();
-		if (isset($_COOKIE['user'])){
-			setcookie('user', '', time() - (60*60*24*30));
-		}
-		header('location: ./home');
+		header('location: ../home');
     }
 }

@@ -1,0 +1,68 @@
+.left-bar {
+    background-color: #182320;
+    width: 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    font-size: 0.8em;
+}
+
+.left-bar .items .item,
+.left-bar .items .footer {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.left-bar .items .footer {
+    position: absolute;
+    bottom: 20px;
+    margin: 20px;
+    margin-bottom: 0;
+}
+
+.left-bar .items .footer a {
+    text-decoration: none;
+    color: rgb(155, 146, 146);
+}
+
+#master>div.left-bar>div>div.footer:hover {
+    color: white;
+    font-weight: 500;
+}
+
+.left-bar>.items>.item:nth-child(1)>.avatar>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.left-bar .items .item .icon {
+    font-size: 24px;
+}
+
+.left-bar .items .item .icon {
+    font-size: 24px;
+}
+
+.left-bar .items .item.hover {
+    color: white;
+    font-weight: 500;
+}
+
+.left-bar .items .item:hover {
+    color: white;
+    font-weight: 500;
+}
+
+.left-bar .items .item:active {
+    color: white;
+    font-weight: 500;
+    background: #093a11d1;
+}

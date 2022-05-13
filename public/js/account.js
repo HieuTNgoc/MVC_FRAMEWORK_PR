@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+    // Layout edit account----------------------------------------------------
     // Turn on over layout edit account
     $('.change-acc.btn').click(function() {
         $('.response-model.update-info').css("display", "flex");
@@ -9,10 +11,9 @@ $(document).ready(function() {
         event.preventDefault();
         $('.response-model.update-info').css("display", "none");
     });
-});
 
-// Update user data with ajax jquery 
-$(document).ready(function() {
+
+    // Update user data with ajax jquery ------------------------------------
     $('.response-model.update-info input').keypress(function(event) {
         var key_code = (event.keyCode ? event.keyCode : event.which);
         if (key_code == '13') {
@@ -59,10 +60,9 @@ $(document).ready(function() {
             }
         });
     });
-});
 
-// Update img user when click on the avatar
-$(document).ready(function() {
+
+    // Update img user when click on the avatar--------------------------------
     $('#img-upload').click(function() {
         return $('#img_url_upload').click();
     });
@@ -91,10 +91,9 @@ $(document).ready(function() {
             }
         });
     });
-});
 
-// Confirm logout btn
-$(document).ready(function() {
+
+    // Confirm logout btn--------------------------------------------------------
     // Turn on over layout edit account
     $('.logout-btn').click(function() {
         $('#response-model').css("display", "flex");
@@ -107,12 +106,12 @@ $(document).ready(function() {
     });
 
     $('#yes-msg').click(function() {
-        window.location.href = 'http://localhost/mvc_framework/logout';
+        window.location.href = 'http://localhost/mvc_framework/logout/executeLogout';
     });
-});
 
-// change password btn
-$(document).ready(function() {
+
+    // change password btn----------------------------------------------------------
+
     //Turn on over layout change password
     $('.change-pass.btn').click(function() {
         $('.response-model.change-password').css('display', 'flex');
@@ -122,18 +121,8 @@ $(document).ready(function() {
     $('.close-btn').click(function() {
         $('.response-model.change-password').css('display', 'none');
     });
-});
 
-// change password with ajax
-$(document).ready(function() {
-    $('.response-model.change-password').keypress(function(event) {
-        var key_code = (event.keyCode ? event.keyCode : event.which);
-        if (key_code == '13') {
-            event.preventDefault();
-            alert('You just click enter, form will submit now...');
-            return $('#submit-pass').click();
-        }
-    });
+    // change password with ajax-----------------------------------------------------
     $('#submit-pass').click(function(event) {
         event.preventDefault();
         var old_pass = $('#old_pass').val();
@@ -156,7 +145,7 @@ $(document).ready(function() {
                     alert(data.msg);
                     if (option == 'no') return location.reload();
                     alert('Your account will logout now!')
-                    window.location.href = 'http://localhost/mvc_framework/logout';
+                    window.location.href = 'http://localhost/mvc_framework/logout/executeLogout';
                 },
                 error: function() {
                     return alert('Nothing change! Please try again...');
@@ -166,4 +155,19 @@ $(document).ready(function() {
             return alert('All the Fields are required! Please fill all.');
         }
     });
+
+    // Update img not affect by cookie 
+    var src = $('#img-upload').attr('src') + '?v=' + Math.random();
+    $('#img-upload').attr('src', src);
+    $('#avt').attr('src', src);
+
+    $('.response-model.change-password').keypress(function(event) {
+        var key_code = (event.keyCode ? event.keyCode : event.which);
+        if (key_code == '13') {
+            event.preventDefault();
+            alert('You just click enter, form will submit now...');
+            return $('#submit-pass').click();
+        }
+    });
+
 });

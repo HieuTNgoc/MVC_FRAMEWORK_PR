@@ -1,0 +1,194 @@
+.response-model {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(29, 28, 28, 0.5);
+    line-height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.response-model .content-model {
+    position: relative;
+    background-color: #fff;
+    min-height: 500px;
+    min-width: 700px;
+    width: fit-content;
+    border-radius: 3px;
+    display: block;
+}
+
+.response-model.change-password .content-model {
+    position: relative;
+    background-color: #fff;
+    min-height: 300px;
+    min-width: 500px;
+    width: 550px;
+    border-radius: 3px;
+    display: block;
+}
+
+select#logout-selector {
+    width: 100%;
+    padding: 5px 10px;
+    background: aliceblue;
+    border-radius: 3px;
+}
+
+select#logout-selector:focus-visible {
+    outline: #11bf7f;
+}
+
+.row.note {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    padding-top: 15px;
+    background: #eee;
+    color: #666060;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+.response-model .content-model .close-btn .material-icons {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: rgb(167, 163, 163);
+    font-size: 20px;
+}
+
+.response-model .content-model .close-btn .material-icons:hover {
+    cursor: pointer;
+    color: rgb(239, 149, 149);
+    font-size: 24px;
+    border-radius: 50% solid #eee;
+}
+
+.response-model .content-model .heading-info {
+    padding: 20px;
+    background-color: #eee;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: rgb(51, 49, 49);
+    text-transform: capitalize;
+}
+
+.response-model .content-model .content-info {
+    padding: 20px;
+}
+
+.response-model .content-model .row {
+    padding-bottom: 20px;
+}
+
+.response-model .content-model .row .title-info {
+    float: left;
+    width: 180px;
+}
+
+.response-model.change-password .content-model .row .title-info {
+    float: left;
+    width: 210px;
+}
+
+.response-model .content-model .row .form-detail {
+    float: right;
+    width: 70%;
+}
+
+.response-model.change-password .content-model .row .form-detail {
+    float: right;
+    width: 55%;
+}
+
+.response-model .content-model .row .form-detail input {
+    padding: 6px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 1em;
+}
+
+.response-model .content-model .row .fake-input {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #9f9a9a;
+    border-radius: 2px;
+    font-size: 1em;
+    background-color: #ccc;
+}
+
+.response-model .content-model .row .form-detail input:focus-visible,
+.response-model .content-model .row .form-detail textarea:focus-visible {
+    outline: 1px solid rgba(66, 184, 20, 0.7);
+}
+
+.response-model .content-model .row .form-detail textarea {
+    width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    min-height: 50px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 1em;
+}
+
+.response-model .content-model .title-info .head-title {
+    font-weight: 500;
+}
+
+.response-model .content-model .title-info .sub-title {
+    opacity: 0.6;
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
+.response-model .content-model .footer-content {
+    margin: 0px 20px 20px;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px dashed #eee;
+}
+
+.response-model .content-model .footer-content button {
+    border-radius: 3px;
+    border: none;
+    width: 47%;
+    font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.content-model .footer-content .btn-skip {
+    color: rgb(46, 43, 43);
+    background-color: rgb(186, 180, 180);
+    float: left;
+}
+
+.content-model .footer-content .btn-skip:hover {
+    color: rgb(29, 28, 28);
+    background-color: rgb(132, 77, 77);
+}
+
+.content-model .footer-content .btn-update {
+    background-color: rgb(32, 183, 15);
+    color: rgb(254, 254, 254);
+    float: right;
+}
+
+.content-model .footer-content .btn-update:hover {
+    color: rgb(239, 239, 239);
+    background-color: rgb(27, 124, 5);
+}
+
+.response-model .clear {
+    clear: both !important;
+}

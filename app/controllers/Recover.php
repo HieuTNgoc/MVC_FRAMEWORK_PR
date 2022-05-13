@@ -1,21 +1,12 @@
 <?php
 class Recover extends Controller
 {
-	public function __construct() {
-		$this->userModel = $this->model('User');
-	}
-
     /**
-	 * Manage recover page
+	 * View recover page
 	 *
 	 * @return void
 	 */
-	public function recover()
-	{
-		$data = [
-			'title' => 'Recover - Base Account'
-		];
-
-		$this->view('users/recover', $data);
+	public function index(){
+		$this->view('users/recover');
 	}
 }
