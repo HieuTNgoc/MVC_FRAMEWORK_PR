@@ -43,7 +43,7 @@ class Login extends Controller {
 				'email_error' => '',
 				'password_error' => ''
 			];
-			$saved = trim($_POST['password']);
+			$saved = trim($_POST['saved']);
 			
 			// Validate email and password
 			$data['email_error'] = $this->validationServices->emailValidation($data['email']);
@@ -80,7 +80,7 @@ class Login extends Controller {
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
-		if ($saved) {
+		if ($saved == 'true') {
 			$token = uniqid('user_', true);
 			if ($this->userModel->updateToken($token, $user->user_id)){
 				setcookie('user', $token, time() + (60*60*24*30), '/');

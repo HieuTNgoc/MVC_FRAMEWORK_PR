@@ -18,7 +18,6 @@ $(document).ready(function() {
             return;
         }
         $.ajax({
-            // url: ".login/login",
             url: "./login/executeLogin",
             type: "POST",
             data: { email: email, password: password, saved: saved },
