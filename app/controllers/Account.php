@@ -1,5 +1,6 @@
 <?php
 class Account extends Controller {
+	
 	public function __construct() {
 		if ($this->userModel == null) {
 			$this->userModel = $this->model('User');

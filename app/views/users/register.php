@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - <?php echo SITENAME; ?></title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/style.css">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/register.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/form.auth.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/model.response.msg.css">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="<?php echo URLROOT; ?>/public/js/register.js"></script>
@@ -25,7 +27,7 @@
                     <p class="sub-heading">Welcome back. Register to start working.</p>
                 </div>
                 <form  method="POST" id="auth-form">
-                    <div class="form-login">
+                    <div class="form-detail">
                         <div class="row">
                             <div class="label">User Name</div>
                             <div class="input">
@@ -82,27 +84,7 @@
         </div>
         <div class="right-background">
         </div>
-        <div id="response-model">
-            <div class="content-model">
-				<div class="close-btn">
-					<div class="icon">
-                        <i class="material-icons">close</i>
-                    </div>
-				</div>
-				<table class="header-content">
-					<tbody>
-						<tr>
-							<td><i class="material-icons">error_outline</i></td>
-                    		<td><div class="detail"></div></td>
-						</tr>
-					</tbody>
-                    
-				</table>
-				<div class="footer-content close-btn">
-					OK
-				</div>
-            </div>
-        </div>
+        <?php require_once APPROOT . '/views/users/components/model.response.msg.alert.php'; ?>
     </div>
 </body>
 

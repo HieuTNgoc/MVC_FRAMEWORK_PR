@@ -1,0 +1,70 @@
+.menu {
+    position: fixed;
+    width: 270px;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    color: #999;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #f6f6f6;
+    overflow: auto;
+}
+
+.menu .box {
+    padding: 20px 0px;
+    border-bottom: 2px solid #eee;
+    color: rgb(108, 105, 105);
+}
+
+.menu .top {
+    padding-left: 10px;
+}
+
+.menu .top>.heading {
+    text-transform: capitalize;
+    font-size: 1.4em;
+    font-weight: 350;
+    color: rgb(46, 43, 43);
+}
+
+.menu .box .sub-heading {
+    text-transform: uppercase;
+    opacity: 0.8;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.menu .item {
+    padding: 10px 0 0 20px;
+    color: rgb(129, 123, 123);
+    cursor: pointer;
+}
+
+.menu .menu-icon,
+.menu .info {
+    display: inline-block;
+}
+
+.menu .menu-icon {
+    padding-right: 10px;
+    vertical-align: -3px;
+}
+
+.menu .material-icons {
+    font-size: 16px;
+}
+
+.menu .items .item:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.menu .items .item:active {
+    color: #11bf7f;
+    font-weight: bold;
+}
+
+.menu .clear {
+    display: block;
+    position: absolute;
+    bottom: 0;
+}

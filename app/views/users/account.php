@@ -7,7 +7,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Account - <?php echo SITENAME; ?></title>
 	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/style.css">
-	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/account.css">
+	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/page.account.css">
+	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/navbar.left.css">
+	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/menu.right.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/model.response.msg.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/model.update.css">
+
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="<?php echo URLROOT; ?>/public/js/account.js"></script>
@@ -16,7 +21,7 @@
 <body>
 	<i class='fas fa-user-circle' style='font-size:48px;color:red'></i>
 	<div id="master">
-		<?php require_once APPROOT . '/views/users/components/left_nav_account.php'; ?>
+		<?php require_once APPROOT . '/views/users/components/navbar.left.php'; ?>
 		<div class="content">
 			<div class="page">
 				<div class="app-title">
@@ -134,11 +139,11 @@
 					</div>
 				</div>
 			</div>
-			<?php require_once APPROOT . '/views/users/components/menu_settings_account.php'; ?>
+			<?php require_once APPROOT . '/views/users/components/menu.right.php'; ?>
 		</div>
-		<?php require_once APPROOT . '/views/users/components/update_info.php'; ?>
-		<?php require_once APPROOT . '/views/users/components/change_password.php'; ?>
-		<?php require_once APPROOT . '/views/users/components/confirm_logout_message.php'; ?>
+		<?php require_once APPROOT . '/views/users/components/model.update.info.php'; ?>
+		<?php require_once APPROOT . '/views/users/components/model.update.password.php'; ?>
+		<?php require_once APPROOT . '/views/users/components/model.response.msg.confirm.php'; ?>
 	</div>
 </body>
 

@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Home - <?php echo SITENAME; ?></title>
-	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/index.css">
+	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/page.home.css">
 </head>
 
 <body>
@@ -17,11 +17,15 @@
 				<li>
 					<a href="<?php echo URLROOT; ?>/home">Home</a>
 				</li>
-				<br>
+				<br><br>
 				<li>
 					<a href="<?php echo URLROOT; ?>/register">Register</a>
 				</li>
-				<br>
+				<br><br>
+				<li>
+					<a href="<?php echo URLROOT; ?>/recover">Recover</a>
+				</li>
+				<br><br>
 				<li class="btn-login">
 					<?php if (isset($_SESSION['username'])) : ?>
 						<a href="<?php echo URLROOT; ?>/logout/executeLogout">Logout</a>
@@ -29,7 +33,7 @@
 						<a href="<?php echo URLROOT; ?>/login">Login</a>
 					<?php endif; ?>
 				</li>
-				<br>
+				<br><br>
 				<li>
 					<a href="<?php echo URLROOT; ?>/account">Account</a>
 				</li>

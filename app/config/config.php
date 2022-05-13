@@ -6,7 +6,6 @@
 	define('DB_NAME', 'account');
 
 	//APPROOT
-	// define('APPROOT', dirname(dirname(__FILE__)));
 	define('APPROOT', dirname(dirname(__FILE__)));
 
 	//URLROOT (Dynamic links)

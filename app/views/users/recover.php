@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recover Password - <?php echo SITENAME; ?></title>
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/style.css">
-    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/recover.css">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/form.auth.css">
+
 </head>
 
 <body>
@@ -30,7 +31,7 @@
                     <div class="login-check-box">
                         <input type="checkbox" name="saved" id="saved">reCAPTCHA in here
                     </div>
-                    <div class="submit">Recover password</div>
+                    <div id="submit">Recover password</div>
                     <div class="email-sender">
                         <div class="sender">
                             Email will be sent via <a href="" target="_blank">SendGrid</a>. Click to select another sender.
@@ -38,7 +39,7 @@
                     </div>
                 </form>
                 <div class="extra-inf">
-                    <a href="#" class="extra-option">Login now</a> if your company was already on <b>Base Account</b>
+                    <a href="./login" class="extra-option">Login now</a> if your company was already on <b>Base Account</b>
                 </div>
             </div>
         </div>

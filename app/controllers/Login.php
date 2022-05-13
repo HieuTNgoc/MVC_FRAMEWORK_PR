@@ -1,10 +1,11 @@
 <?php
-class Login extends Controller
-{
-	public function __construct()
-	{
+class Login extends Controller {
+	public function __construct() {
 		if ($this->userModel == null) {
 			$this->userModel = $this->model('User');
+		}
+		if ($this->validationServices == null) {
+			$this->validationServices = $this->services('Validation');
 		}
 	}
 
@@ -23,6 +24,7 @@ class Login extends Controller
 		];
 
 		if (isset($_COOKIE['user'])) {
+			// die(var_dump($_COOKIE['user'])); 
 			$token = $_COOKIE['user'];
 			$saved_user = $this->userModel->getUserByToken($token);
 			if (!$saved_user) {
@@ -56,40 +58,27 @@ class Login extends Controller
 			];
 			$saved = trim($_POST['password']);
 			
-			// Validate email
-			if (empty($data['email'])) {
-				$data['email_error'] = 'Please enter email address.';
-			} elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-				$data['email_error'] = 'Please enter the correct email format.';
-			}
-
-			//Minimum eight characters, at least one letter and one number
-			$passwordValidation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
-
-			// Validate password on length(8) and numeric values 
-			if (empty($data['password'])) {
-				$data['password_error'] = 'Please enter the password.';
-			} elseif (strlen($data['password']) < 8) {
-				$data['password_error'] = 'Password must be at least 8 characters.';
-			} elseif (!preg_match($passwordValidation, $data['password'])) {
-				$data['password_error'] = 'Please enter the correct password format.';
-			}
+			// Validate email and password
+			$data['email_error'] = $this->validationServices->emailValidation($data['email']);
+			$data['password_error'] = $this->validationServices->passwordValidation($data['password']);
 
 			// Check if all errors are not empty
 			if (empty($data['email_error']) && empty($data['password_error'])) {
-				
 				$logged_in_user = $this->userModel->login($data['email'], $data['password']);
 				
 				if ($logged_in_user) {
 					$this->create_user_session($logged_in_user, $saved);
-				} else {
-					$data['password_error'] = 'Password or Email is incorrect. Please try again!';
-				}
+				} 
+				$data['password_error'] = 'Password or Email is incorrect. Please try again!';
 			}
+
 			$response = '';
-			if ($data['email_error'] != '') $response = $response . "<br>" . $data['email_error'];
-			if ($data['password_error'] != '') $response = $response . "<br>" . $data['password_error'];
-			
+			if (!empty($data['email_error'])) {
+				$response = $response . "<br>" . $data['email_error'];
+			}
+			if (!empty($data['password_error'])) {
+				$response = $response . "<br>" . $data['password_error'];
+			}
 			$this->ajaxResponse(false, $response);
 		}
 	}
@@ -100,7 +89,7 @@ class Login extends Controller
 	 * @param [mixed] $user
 	 * @return void
 	 */
-	private function create_user_session($user, $saved){
+	private function create_user_session($user, $saved) {
 		$_SESSION['user_id'] = $user->user_id;
 		$_SESSION['username'] = $user->username;
 		$_SESSION['email'] = $user->email;
@@ -110,7 +99,6 @@ class Login extends Controller
 				setcookie('user', $token, time() + (60*60*24*30), '/');
 			}
 		}
-
 		$this->ajaxResponse(true, 'Login Successfully');
 	}
 }

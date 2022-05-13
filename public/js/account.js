@@ -122,22 +122,7 @@ $(document).ready(function() {
         $('.response-model.change-password').css('display', 'none');
     });
 
-
     // change password with ajax-----------------------------------------------------
-
-    // Update img not affect by cookie 
-    var src = $('#img-upload').attr('src') + '?v=' + Math.random();
-    $('#img-upload').attr('src', src);
-    $('#avt').attr('src', src);
-
-    $('.response-model.change-password').keypress(function(event) {
-        var key_code = (event.keyCode ? event.keyCode : event.which);
-        if (key_code == '13') {
-            event.preventDefault();
-            alert('You just click enter, form will submit now...');
-            return $('#submit-pass').click();
-        }
-    });
     $('#submit-pass').click(function(event) {
         event.preventDefault();
         var old_pass = $('#old_pass').val();
@@ -170,4 +155,19 @@ $(document).ready(function() {
             return alert('All the Fields are required! Please fill all.');
         }
     });
+
+    // Update img not affect by cookie 
+    var src = $('#img-upload').attr('src') + '?v=' + Math.random();
+    $('#img-upload').attr('src', src);
+    $('#avt').attr('src', src);
+
+    $('.response-model.change-password').keypress(function(event) {
+        var key_code = (event.keyCode ? event.keyCode : event.which);
+        if (key_code == '13') {
+            event.preventDefault();
+            alert('You just click enter, form will submit now...');
+            return $('#submit-pass').click();
+        }
+    });
+
 });

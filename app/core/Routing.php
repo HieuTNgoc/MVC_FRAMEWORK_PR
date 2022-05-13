@@ -26,6 +26,7 @@ class Routing {
 		if (!isset($url[1]) || !file_exists(APPROOT . '\/controllers\/' . ucwords($url[0]) . '.php')) {
 			return $this->callController();
 		}
+		unset($url[0]);
 		
 		// Import the controller 
 		require_once APPROOT . '\/controllers\/' . $this->current_controller . '.php';
@@ -46,14 +47,24 @@ class Routing {
 
 	}
 
+	/**
+	 * Call controller by callback 
+	 *
+	 * @return void
+	 */
 	private function callController() {
 		require_once APPROOT . '\/controllers\/' . $this->current_controller . '.php';
 		$this->current_controller = new $this->current_controller;
 		return call_user_func_array([$this->current_controller, $this->current_method], $this->params);
 	}
 
-	private function getUrl()
-	{
+
+	/**
+	 * Get url, split into array
+	 *
+	 * @return array
+	 */
+	private function getUrl() {
 		if (isset($_GET['url'])) {
 			$url = rtrim($_GET['url'], '/');
 			// Filter variables as string/number

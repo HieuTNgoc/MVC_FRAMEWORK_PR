@@ -1,85 +1,5 @@
-.content {
-    max-width: 550px;
-    margin: auto;
-    padding: 20px;
-}
-
-.heading {
-    text-align: center;
-    border-bottom: 2px solid #eee;
-}
-
-.logo-login {
-    padding: 20px;
-}
-
-.heading h1 {
-    font-size: 30px;
-    font-weight: 500;
-    padding: 10px;
-}
-
-.heading .sub-heading {
-    opacity: 0.7;
-    padding-bottom: 20px;
-}
-
-#auth-form {
-    padding: 30px 0px 50px;
-    width: 100%;
-    border-bottom: 1.5px solid #eee;
-}
-
-#auth-form .invalidFeedback {
-    color: #ff0000;
-    font-size: 0.8em;
-}
-
-.form-login {
-    width: 100%;
-}
-
-#auth-form .label {
-    display: inline-block;
-    font-size: 1.1em;
-    font-weight: 700;
-    padding-bottom: 10px;
-}
-
-#auth-form .row input {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 2px;
-    width: 100%;
-    font-size: 1.2em;
-}
-
-.login-check-box {
-    padding: 30px 0px 10px;
-}
-
-#auth-form .row {
-    padding-bottom: 20px;
-    position: relative;
-}
-
-#auth-form #submit {
-    text-align: center;
-    width: calc(100%-20px);
-    color: white;
-    font-weight: 700;
-    font-size: 1.1em;
-    background-color: #2bd14e;
-    padding: 10px 25px;
-    border-radius: 3px;
-    margin: 20px 0px;
-    cursor: pointer;
-    width: 100%;
-    border: none;
-}
-
-#auth-form #submit:hover {
-    opacity: 0.7;
+#response-model .clear {
+    clear: both !important;
 }
 
 #response-model {
@@ -137,6 +57,14 @@
     color: #cd0909;
 }
 
+#response-model .content-model .header-content.alert .material-icons {
+    float: left;
+    font-size: 3.3em;
+    padding-right: 10px;
+    vertical-align: middle;
+    color: #cd8f09;
+}
+
 #response-model .content-model .header-content .detail {
     vertical-align: middle;
 }
@@ -155,4 +83,25 @@
     color: #ff0404;
     font-size: 1em;
     background-color: rgb(243, 236, 236);
+}
+
+#response-model #yes-msg {
+    float: right;
+    padding-right: 60px;
+    color: rgb(32, 183, 15);
+    cursor: pointer;
+}
+
+#response-model #yes-msg:hover {
+    font-size: 1.2em;
+}
+
+#response-model #no-msg {
+    float: left;
+    padding-left: 60px;
+    cursor: pointer;
+}
+
+#response-model #no-msg:hover {
+    font-size: 1.2em;
 }

@@ -10,13 +10,14 @@ body {
     font-family: 'Roboto', 'Segoe UI', sans-serif;
     background-image: url(https://static-gcdn.basecdn.net/account/image/background.png);
     background-size: cover;
-    background-repeat: repeat-x;
+    background-repeat: none;
     background-position: right center;
     color: white;
 }
 
-.top-nav {
-    display: block;
+h1.top-nav {
+    padding-top: 50px;
+    margin: 0;
 }
 
 .top-nav {
@@ -26,7 +27,7 @@ body {
 .top-nav ul li {
     display: inline-block;
     margin-left: 28px;
-    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .top-nav ul li a {

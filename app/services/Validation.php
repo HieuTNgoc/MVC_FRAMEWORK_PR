@@ -1,6 +1,6 @@
 <?php
-class Validation
-{
+class Validation {
+
 	/**
 	 * Validate username
 	 *
@@ -13,12 +13,12 @@ class Validation
 		if (empty($username)) {
 			return 'Please enter username.';
 		} 
-		
+
 		if (!preg_match($name_validation, $username)) {
 			return 'User name can only contain letters and numbers.';
-		} 
-			
-		return 'true';
+		} 	
+
+		return '';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Validation
 			return 'Please enter the correct email format.';
 		}
 
-		return 'true';
+		return '';
 	}
 
 	/**
@@ -48,7 +48,6 @@ class Validation
 		//Minimum eight characters, at least one letter and one number
 		$passwordValidation = '/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/';
 
-		// Validate password on length(8) and numeric values 
 		if (empty($password)) {
 			return 'Please enter the password.';
 		} 
@@ -61,8 +60,9 @@ class Validation
 			return 'Please enter the correct password format.';
 		}
 
-		return true;
+		return '';
 	}
+
 
 	/**
 	 * Validate datetime

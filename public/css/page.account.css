@@ -1,0 +1,259 @@
+.item.active {
+    color: #11bf7f !important;
+    font-weight: bold;
+}
+
+.content {
+    position: absolute;
+    left: 100px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.content {
+    overflow: auto;
+}
+
+.content .page {
+    margin-right: 270px;
+    position: relative;
+}
+
+.content .app-title {
+    margin: 20px;
+    height: 60px;
+    border-bottom: #eee solid 1px;
+}
+
+.content .app-title .btn {
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    background-color: rgb(28, 197, 158);
+    color: white;
+    font-weight: 450;
+}
+
+.content .app-title .btn:hover {
+    padding: 10px 15px;
+    background-color: rgb(28, 197, 118);
+    color: white;
+    cursor: pointer;
+}
+
+.content .app-title .label {
+    color: rgb(174, 169, 169);
+    font-size: 0.6em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.content .app-title .title {
+    font-size: 1.2em;
+    opacity: 0.8;
+}
+
+.content .app-title .icon {
+    display: inline-block;
+}
+
+.content .app-title .icon .material-icons {
+    font-size: 30px;
+    padding-right: 10px;
+    opacity: 0.7;
+}
+
+.content .app-title .acc-info {
+    display: inline-block;
+}
+
+.content .app-title .icon {
+    display: inline-block;
+    padding-right: 2px;
+    vertical-align: -2px;
+}
+
+.content .app-title .btn .icon .material-icons {
+    font-size: 16px;
+}
+
+.content .profile {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px 20px
+}
+
+.content .profile .acc-edit {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.content .profile .edit-menu {
+    display: none;
+    position: absolute;
+    width: 250px;
+    right: 0px;
+    top: 30px;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 2px 10px 0px rgb(0 0 0 / 20%);
+    border-radius: 4px;
+    background-color: white;
+}
+
+.content .profile .edit-menu .item {
+    padding: 7px 15px;
+    border-radius: 3px;
+}
+
+.content .profile .edit-menu .item:hover {
+    background-color: rgb(28, 197, 158);
+    color: white;
+    font-weight: 500;
+}
+
+.content .profile .acc-edit .icon:hover+.edit-menu {
+    display: block;
+}
+
+.content .profile .acc-edit .edit-menu:hover {
+    display: block;
+    z-index: 10;
+}
+
+.content .profile .acc-edit .icon {
+    opacity: 0.5;
+    padding: 10px 0 20px 20px;
+}
+
+.content .main {
+    position: relative;
+    padding-left: 120px;
+    padding-bottom: 30px;
+}
+
+.content .profile .main .img {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.content .profile .main .img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.profile .main .detail-info .title {
+    color: black;
+    font-size: 1.6em;
+    font-weight: 450;
+    text-transform: capitalize;
+    border: none;
+    padding-bottom: 10px;
+}
+
+.profile .main .detail-info .sub-title {
+    font-size: 1em;
+    font-weight: 400;
+    color: #999;
+    padding-bottom: 5px;
+}
+
+.profile .main .detail-info .info {
+    padding: 4px 0;
+    font-size: 0.9em;
+    color: black;
+}
+
+.profile .main .detail-info .info b {
+    font-weight: 600;
+    opacity: 0.7;
+    padding-right: 10px;
+}
+
+.content .profile .list {
+    padding: 40px 0 20px;
+    border-bottom: none;
+    position: relative;
+}
+
+.contact-info.info>b {
+    padding-right: 80px;
+    opacity: 0.5;
+    font-weight: 600;
+}
+
+.content .profile .list .item.url {
+    position: relative;
+}
+
+.content .profile .list.last-item {
+    border: none;
+    padding-bottom: 300px;
+}
+
+.content .profile .title {
+    text-transform: uppercase;
+    border-bottom: rgb(225, 222, 222) solid 1px;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #999;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.content .profile .list .name {
+    font-size: 1.3em;
+    font-weight: 500;
+    padding-bottom: 5px;
+    color: #11bdbf;
+    cursor: pointer;
+}
+
+.content .profile .list .name:hover {
+    text-decoration: underline;
+}
+
+.content .profile .list .item-none {
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    color: #888;
+    background-color: #f8f8f8;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 3px;
+}
+
+.content .profile .list .icon {
+    position: absolute;
+    font-size: 1.4px;
+    cursor: pointer;
+    top: 20px;
+    right: 0;
+    opacity: 0.3;
+}
+
+.content .profile .list .add {
+    position: absolute;
+    font-size: 1.1px;
+    cursor: pointer;
+    right: 0;
+    top: 20px;
+    padding: 5px;
+}
