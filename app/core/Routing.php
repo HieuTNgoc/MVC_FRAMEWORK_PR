@@ -12,6 +12,11 @@ class Routing {
 		//print_r($this->getUrl());
 		$url = $this->getUrl();
 
+		// Return home page if url null
+		if (!isset($url[0])) {
+			return $this->callController();
+		}
+
 		// Return view home page if not login yet and request controller 'account'
 		if ($url[0] == 'account' && !isset($_SESSION['username'])) {
 			return $this->callController();
